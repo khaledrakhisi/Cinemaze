@@ -4,8 +4,8 @@ A portal to the world of Cinema!
 
 ## Description
 
-CINEMAZE is a react app which is designed as Mobile-First approach and this means it work perfectly on mobile/tablets. using this app you can find annything you want. TV shows, Movies, Actors/Actreses. This app powered by :
-[themoviedb.org](https://api.themoviedb.org)
+CINEMAZE is a react.js app which is designed as Mobile-First approach and this means it work perfectly on mobile/tablets. using this app you can find annything you want. TV shows, movies, Actors/Actresses, movies posters, trailer videos and comprehensive detailed information. You are able to create your own favourites list and also select some movies and add them to a watch later list.
+ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 
 ## Getting Started
 
