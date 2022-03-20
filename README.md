@@ -11,20 +11,29 @@ CINEMAZE is a react.js app which is designed as Mobile-First approach and this m
 
 ![CV APP Preview](https://share.balsamiq.com/c/uMzGrHVH9KUE9xG8wqz46.png)
 
-### Dependencies
 
+### Installing Dependencies
 
-### Installing
+```
+npm install / yarn
+```
 
-* npm install / yarn
+### Build & Run
 
-### Executing program
+```
+npm run build / yarn build
+npm start / yarn start
+```
 
-* npm start / yarn start
+#### Test
+* Unit Test
+    * Run `jest` to execute the unit tests.
+* E2E Test
+    * Run `cy` to execute the e2e test.
 
 ## Help
 
-In case of any issues please contact me at: info@khaldr.ir
+In case of any issues please contact me at: info@khaledr.ir
 
 ## Authors
 
