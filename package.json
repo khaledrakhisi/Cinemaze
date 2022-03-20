@@ -16,11 +16,38 @@
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "lint-staged": "^11.1.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-no-unsupported-browser-features": "^4.1.4",
+    "stylelint-order": "^4.0.0",
+    "prettier": "^2.6.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "stylelint:fix": "stylelint --syntax scss src/*/.scss --fix",
+    "eslint:fix": "eslint . --fix"
+  },
+  "lint-staged": {
+    "src/*/.scss": [
+      "stylelint --syntax scss --fix"
+    ],
+    "src/*/.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +66,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:khaledrakhisi/Cinemaze.git",
+  "author": "khaledr <info@khaledr.ir>",
+  "license": "MIT"
 }
