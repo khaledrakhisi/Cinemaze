@@ -9,20 +9,33 @@ CINEMAZE is a react.js app which is designed as Mobile-First approach and this m
 
 ## Getting Started
 
+<div align="center"><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/angular-icon.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/bootstrap.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/eslint.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/jasmine.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/karma.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/protactor.svg"/><img width="55" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/typescript-icon.svg"/></div>
+
+
 ![CV APP Preview](https://share.balsamiq.com/c/uMzGrHVH9KUE9xG8wqz46.png)
+Designed with [Balsamiq.com](https://balsamiq.com)
 
 
 ### Installing Dependencies
 
 ```
-npm install / yarn
+npm install
+```
+or
+```
+yarn
 ```
 
 ### Build & Run
 
 ```
-npm run build / yarn build
-npm start / yarn start
+npm run build
+npm start
+```
+or
+```
+yarn build
+yarn start
 ```
 
 #### Test
