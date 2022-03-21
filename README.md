@@ -7,9 +7,12 @@ A portal to the **amazing** world of **Cinema!** Cinema + Mazing = Cinemaze
 CINEMAZE is a great react.js app which is designed as Mobile-First approach and this means it work perfectly on mobile/tablets. using this app you can find annything you want. TV shows, movies, Actors/Actresses, movies posters, trailer videos and comprehensive detailed information. You are able to create your own favourites list and also select some movies and add them to a watch later list.
 This app powered by : [themoviedb.org](https://api.themoviedb.org)
 
+## Demo
+
 ## Getting Started
 
 ## Stack
+
 <div align="center">
 <a href="https://reactjs.org/" title="React"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="32px" height="32px"></a>
 <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="32px" height="32px"></a>
@@ -28,11 +31,35 @@ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 <a href="https://www.firebase.com/" title="Firebase"><img src="https://github.com/get-icon/geticon/raw/master/icons/firebase.svg" alt="Firebase" width="32px" height="32px"></a>
 </div>
 
-##
-##
+## Overview
 
 ![CV APP Preview](https://share.balsamiq.com/c/uMzGrHVH9KUE9xG8wqz46.png)
 Designed with [Balsamiq.com](https://balsamiq.com)
+
+## Approches & Structure
+
+![TDD Cicle](https://marsner.com/wp-content/uploads/test-driven-development-TDD.png)
+
+### Components tree & State map
+
+```
+**App**
+|
+|---MainPage
+|   |
+|   |---SearchArea
+|   |
+|   |---MovieList
+|   |   |
+|   |   |---MoviewItem
+|   |
+|---SignInOutPage
+|   |
+|   |---SignIn
+|   |
+|   |---Signout
+|   |
+```
 
 ### Installing Dependencies
 
@@ -57,6 +84,7 @@ yarn start
 ```
 
 #### Test
+
 Do not follow the happy path! be prepared for worst case senario.
 
 - Unit Test
