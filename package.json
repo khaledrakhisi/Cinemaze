@@ -24,14 +24,14 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "lint-staged": "^11.1.1",
+    "prettier": "^2.6.0",
     "stylelint": "^13.13.1",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
     "stylelint-no-unsupported-browser-features": "^4.1.4",
-    "stylelint-order": "^4.0.0",
-    "prettier": "^2.6.0"
+    "stylelint-order": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

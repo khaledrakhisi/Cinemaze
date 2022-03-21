@@ -1,6 +1,6 @@
 # CINEMAZE
 
-A portal to the **amazing** world of **Cinema!** Cinema + Mazing = Cinemaze
+A portal to the **amazing** world of **Cinema!** Cinema + Maz + e = Cinemaze
 
 ## Description
 
@@ -51,13 +51,13 @@ Designed with [Balsamiq.com](https://balsamiq.com)
 |   |
 |   |---MovieList
 |   |   |
-|   |   |---MoviewItem
+|   |   |---MovieItem
 |   |
-|---SignInOutPage
+|---SignInUpPage
 |   |
 |   |---SignIn
 |   |
-|   |---Signout
+|   |---Signup
 |   |
 ```
 
