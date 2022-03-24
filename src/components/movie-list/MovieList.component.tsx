@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   list: {
     width: "100%",
     bgcolor: "background.paper",
-    maxHeight: "70vh",
+    maxHeight: "65vh",
     minHeight: "50vh",
     overflow: "auto",
   },

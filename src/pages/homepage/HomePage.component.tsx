@@ -6,10 +6,10 @@ import SearchArea from "../../components/search-area/SearchArea.component";
 import movies from "../../data/mock-data";
 
 const HomepageStyled = styled.div`
-  width: 100vw;
-  height: calc(100vh - 100px);
+  width: 90vw;
+  height: calc(100vh - 120px);
 
-  padding: 0;
+  padding: 10px;
 `;
 
 const HomePage: React.FunctionComponent = () => {

@@ -8,17 +8,17 @@ const SearchAreaStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 95%;
+  width: 90%;
 
-  margin: 10px 5px;
+  margin: 10px 0;
 `;
 
 const InputSearchStyled = styled(InputSearch)`
-  margin: 0 10px;
+  margin: 0 0;
 `;
 
 const ViewToggleButtonsStyled = styled(ViewToggleButtons)`
-  margin: 0 10px;
+  margin: 0 0;
 `;
 
 const SearchArea: React.FunctionComponent = () => {
