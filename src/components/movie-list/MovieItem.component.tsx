@@ -14,8 +14,7 @@ import IMovie from "../../types/movie";
 
 const useStyles = makeStyles({
   list: {
-    paddingBottom: "0",
-    paddingTop: "0",
+    padding: "0 10px",
   },
   title: {
     color: "blue",

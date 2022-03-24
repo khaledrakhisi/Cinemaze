@@ -10,14 +10,14 @@ const SearchAreaStyled = styled.div`
   align-items: center;
   width: 100%;
 
-  margin: 10px 0;
+  margin: 10px 5px;
 `;
 
 const InputSearchStyled = styled(InputSearch)`
   margin: 0 10px;
 `;
 
-const ViewToggleButton = styled(ViewToggleButtons)`
+const ViewToggleButtonsStyled = styled(ViewToggleButtons)`
   margin: 0 10px;
 `;
 
@@ -42,7 +42,7 @@ const SearchArea: React.FunctionComponent = () => {
         type="text"
         value={value}
       />
-      <ViewToggleButton />
+      <ViewToggleButtonsStyled />
     </SearchAreaStyled>
   );
 };
