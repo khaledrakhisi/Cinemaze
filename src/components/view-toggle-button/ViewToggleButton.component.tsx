@@ -29,7 +29,7 @@ const ViewToggleButtons: React.FunctionComponent = () => {
       value={value}
       exclusive
       onChange={handleChange}
-      data-testId="view-toggle-buttons"
+      data-testid="view-toggle-buttons"
     >
       <ToggleButton value="table" aria-label="table">
         <ViewModuleIcon />
