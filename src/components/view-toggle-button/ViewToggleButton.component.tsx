@@ -8,6 +8,10 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { device } from "../../utils/util";
 import { makeStyles } from "@mui/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { TRootStoreType } from "../../redux/store";
+import { EUITypes } from "../../redux/ui/ui-types";
+import { changeViewStyle } from "../../redux/ui/ui-actions";
 
 const ToggleButtonThumb = styled(ToggleButton)`
   background-color: red;
@@ -24,35 +28,39 @@ const useStyles = makeStyles({
 });
 
 const ViewToggleButtons: React.FunctionComponent = () => {
-  const [value, setValue] = useState("list");
-
+  const dispatch = useDispatch();
+  const { currentViewStyle } = useSelector(
+    (state: TRootStoreType) => state.UIState
+  );
   const classes = useStyles();
-
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
-    nextView: string
+    nextView: EUITypes
   ) => {
-    if (nextView != null) setValue(nextView);
+    if (nextView != null) dispatch(changeViewStyle(nextView));
   };
 
   return (
     <ToggleButtonGroup
       orientation="horizontal"
-      value={value}
+      value={currentViewStyle}
       exclusive
       onChange={handleChange}
       data-testid="view-toggle-buttons"
       className={classes.toggleButtonGroup}
     >
-      <ToggleButton value="table" aria-label="table">
+      <ToggleButton value={EUITypes.VIEW_STYLE_TABLEVIEW} aria-label="table">
         <ViewModuleIcon />
       </ToggleButton>
 
-      <ToggleButton value="list" aria-label="list">
+      <ToggleButton value={EUITypes.VIEW_STYLE_LISTVIEW} aria-label="list">
         <ViewListIcon />
       </ToggleButton>
 
-      <ToggleButtonThumb value="thumb" aria-label="thumb">
+      <ToggleButtonThumb
+        value={EUITypes.VIEW_STYLE_THUMBNAIL}
+        aria-label="thumb"
+      >
         <GridViewIcon />
       </ToggleButtonThumb>
     </ToggleButtonGroup>

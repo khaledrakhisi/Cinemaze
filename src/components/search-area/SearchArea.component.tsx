@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import useDebounce from "../../hooks/useDebounce";
+import { changeInputSearchValue } from "../../redux/ui/ui-actions";
 
 import InputSearch from "../input-search/InputSearch.component";
 import ViewToggleButtons from "../view-toggle-button/ViewToggleButton.component";
@@ -24,6 +27,11 @@ const ViewToggleButtonsStyled = styled(ViewToggleButtons)`
 const SearchArea: React.FunctionComponent = () => {
   const [value, setValue] = useState("");
 
+  const dispatch = useDispatch();
+
+  // A custom hook for debouncing
+  const debouncedValue = useDebounce<string>(value, 500);
+
   const inputSearchChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -31,6 +39,11 @@ const SearchArea: React.FunctionComponent = () => {
 
     setValue(value);
   };
+
+  // This use Effect is being used for debouncing sake
+  useEffect(() => {
+    dispatch(changeInputSearchValue(value));
+  }, [debouncedValue]);
 
   return (
     <SearchAreaStyled>

@@ -5,31 +5,40 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import SearchIcon from "@mui/icons-material/Search";
 import StarIcon from "@mui/icons-material/Star";
 import WatchLaterIcon from "@mui/icons-material/WatchLaterOutlined";
+import { useDispatch, useSelector } from "react-redux";
+import { TRootStoreType } from "../../redux/store";
+import { EUITypes } from "../../redux/ui/ui-types";
+import { changeNavTab } from "../../redux/ui/ui-actions";
 
 const NavBottom: React.FunctionComponent = () => {
-  const [value, setValue] = useState("search");
+  const dispatch = useDispatch();
+  const { currentNavTab } = useSelector(
+    (state: TRootStoreType) => state.UIState
+  );
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    console.log("PAGE CHANGED.", newValue);
-
-    if (newValue != null) setValue(newValue);
+  const handleChange = (event: React.SyntheticEvent, newValue: EUITypes) => {
+    if (newValue != null) dispatch(changeNavTab(newValue));
   };
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} data-testid="nav">
+    <BottomNavigation
+      value={currentNavTab}
+      onChange={handleChange}
+      data-testid="nav"
+    >
       <BottomNavigationAction
         label="Favorites"
-        value="Favorites"
+        value={EUITypes.NAV_TAB_FAVORITES}
         icon={<StarIcon />}
       />
       <BottomNavigationAction
         label="Search"
-        value="Search"
+        value={EUITypes.NAV_TAB_SEARCH}
         icon={<SearchIcon />}
       />
       <BottomNavigationAction
         label="Watch later"
-        value="Watch later"
+        value={EUITypes.NAV_TAB_WATCHLATER}
         icon={<WatchLaterIcon />}
       />
     </BottomNavigation>
