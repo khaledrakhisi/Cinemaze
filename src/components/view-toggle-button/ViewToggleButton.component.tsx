@@ -18,7 +18,8 @@ const ToggleButtonThumb = styled(ToggleButton)`
 
 const useStyles = makeStyles({
   toggleButtonGroup: {
-    marginRight: "10px",
+    marginRight: "0",
+    padding: "0",
   },
 });
 

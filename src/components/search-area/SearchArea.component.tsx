@@ -8,7 +8,7 @@ const SearchAreaStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+  width: 95%;
 
   margin: 10px 5px;
 `;
