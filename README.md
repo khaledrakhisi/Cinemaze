@@ -16,7 +16,7 @@ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 <div align="center">
 <a href="https://reactjs.org/" title="React"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="32px" height="32px"></a>
 <a href="https://www.typescriptlang.org/" title="Typescript"><img src="https://github.com/get-icon/geticon/raw/master/icons/typescript-icon.svg" alt="Typescript" width="32px" height="32px"></a>
-<a href="https://www.typescriptlang.org/" title="redux"><img src="https://github.com/get-icon/geticon/raw/master/icons/redux-icon.svg" alt="Redux" width="32px" height="32px"></a>
+<a href="https://redux.js.org/" title="redux"><img src="https://github.com/get-icon/geticon/raw/master/icons/redux.svg" alt="Redux" width="32px" height="32px"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript"><img src="https://github.com/get-icon/geticon/raw/master/icons/javascript.svg" alt="JavaScript" width="32px" height="32px"></a>
 <a href="https://material-ui.com/" title="Material UI"><img src="https://github.com/get-icon/geticon/raw/master/icons/material-ui.svg" alt="Material UI" width="32px" height="32px"></a>
 <a href="https://git-scm.com/" title="Git"><img src="https://github.com/get-icon/geticon/raw/master/icons/git-icon.svg" alt="Git" width="32px" height="32px"></a>
