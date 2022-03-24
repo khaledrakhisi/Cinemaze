@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.2",
+    "@mui/styled-engine-sc": "^5.5.2",
+    "@mui/styles": "^5.5.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -10,13 +17,21 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
+    "@types/redux-logger": "^3.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.5",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
     "eslint-config-prettier": "^8.3.0",
@@ -39,7 +54,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint:fix": "stylelint --syntax scss src/*/.scss --fix",
-    "eslint:fix": "eslint . --fix"
+    "eslint:fix": "eslint . --fix",
+    "test:unit": "jest"
   },
   "lint-staged": {
     "src/*/.scss": [
