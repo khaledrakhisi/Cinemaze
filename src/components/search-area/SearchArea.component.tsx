@@ -11,7 +11,7 @@ const SearchAreaStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 90%;
+  width: 100%;
 
   margin: 10px 0;
 `;

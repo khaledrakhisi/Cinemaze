@@ -11,8 +11,8 @@ const useStyles = makeStyles({
   list: {
     width: "100%",
     bgcolor: "background.paper",
-    maxHeight: "65vh",
-    minHeight: "50vh",
+    maxHeight: "85%",
+    minHeight: "100px",
     overflow: "auto",
   },
   divider: {

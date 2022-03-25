@@ -12,13 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TRootStoreType } from "../../redux/store";
 import { EUITypes } from "../../redux/ui/ui-types";
 import { changeViewStyle } from "../../redux/ui/ui-actions";
-
-const ToggleButtonThumb = styled(ToggleButton)`
-  background-color: red;
-  @media (min-width: ${device.tablet}) {
-    display: none;
-  }
-`;
+import { useMediaQuery } from "@mui/material";
 
 const useStyles = makeStyles({
   toggleButtonGroup: {
@@ -33,11 +27,15 @@ const ViewToggleButtons: React.FunctionComponent = () => {
     (state: TRootStoreType) => state.UIState
   );
   const classes = useStyles();
+  const isGreaterThanTablet = useMediaQuery(device.tablet);
+
   const handleChange = (
     event: React.MouseEvent<HTMLElement>,
     nextView: EUITypes
   ) => {
-    if (nextView != null) dispatch(changeViewStyle(nextView));
+    if (nextView != null) {
+      dispatch(changeViewStyle(nextView));
+    }
   };
 
   return (
@@ -57,12 +55,11 @@ const ViewToggleButtons: React.FunctionComponent = () => {
         <ViewListIcon />
       </ToggleButton>
 
-      <ToggleButtonThumb
-        value={EUITypes.VIEW_STYLE_THUMBNAIL}
-        aria-label="thumb"
-      >
-        <GridViewIcon />
-      </ToggleButtonThumb>
+      {isGreaterThanTablet && (
+        <ToggleButton value={EUITypes.VIEW_STYLE_THUMBNAIL} aria-label="thumb">
+          <GridViewIcon />
+        </ToggleButton>
+      )}
     </ToggleButtonGroup>
   );
 };

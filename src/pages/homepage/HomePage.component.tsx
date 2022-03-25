@@ -12,10 +12,9 @@ import { TRootStoreType } from "../../redux/store";
 import IMovie from "../../types/movie";
 
 const HomepageStyled = styled.div`
-  width: 90vw;
   height: calc(100vh - 120px);
 
-  padding: 10px;
+  padding: 0 10px;
 `;
 
 const HomePage: React.FunctionComponent = () => {
