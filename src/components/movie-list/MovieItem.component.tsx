@@ -11,6 +11,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLaterOutlined";
 import IconButton from "@mui/material/IconButton";
 
 import IMovie from "../../types/movie";
+import { abbreviateNumber } from "../../utils/util";
 
 const useStyles = makeStyles({
   list: {
@@ -94,7 +95,9 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
         secondary={
           <React.Fragment>
             <div className={classes.vote}>
-              <span>{`${movie.vote_average} / ${movie.vote_count}`}</span>
+              <span>{`${movie.vote_average} / ${abbreviateNumber(
+                movie.vote_count
+              )}`}</span>
               <div className={classes.favAndWatchlaterButtons}>
                 <IconButton className={classes.iconButton}>
                   <WatchLaterIcon />
