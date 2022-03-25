@@ -48,7 +48,7 @@
         "error",
         "never"
       ],
-      "camelcase": "error",
+      "camelcase": "off",
       "no-multi-assign": "error",
       "quotes": [
         "error",
@@ -80,12 +80,12 @@
       "no-implicit-coercion": "error",
       "no-param-reassign": "error",
       "no-return-assign": "error",
-      "no-unused-expressions": "error",
+      "no-unused-expressions": "off",
       "no-useless-return": "error",
-      "comma-dangle": ["error", {
+      "comma-dangle": ["warning", {
         "arrays": "only-multiline",
         "objects": "only-multiline",
-        "imports": "never",
+        "imports": "only-multiline",
         "exports": "never",
         "functions": "never"
       }],

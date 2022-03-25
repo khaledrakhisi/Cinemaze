@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner.component";
 
+import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner.component";
 import MovieList, {
   EListType,
 } from "../../components/movie-list/MovieList.component";

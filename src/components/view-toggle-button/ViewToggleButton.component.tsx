@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ViewModuleIcon from "@mui/icons-material/ViewModuleOutlined";
-import GridViewIcon from "@mui/icons-material/GridView";
+import { useMediaQuery } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { device } from "../../utils/util";
 import { makeStyles } from "@mui/styles";
-import { useDispatch, useSelector } from "react-redux";
+
 import { TRootStoreType } from "../../redux/store";
-import { EUITypes } from "../../redux/ui/ui-types";
 import { changeViewStyle } from "../../redux/ui/ui-actions";
-import { useMediaQuery } from "@mui/material";
+import { EUITypes } from "../../redux/ui/ui-types";
+import { device } from "../../utils/util";
 
 const useStyles = makeStyles({
   toggleButtonGroup: {

@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+
 import { EMovieActionTypes, TMovieDispatchType } from "./movie-types";
 
 export const getMovies =

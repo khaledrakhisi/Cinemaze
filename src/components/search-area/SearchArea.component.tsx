@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
 import useDebounce from "../../hooks/useDebounce";
 import { changeInputSearchValue } from "../../redux/ui/ui-actions";
-
 import InputSearch from "../input-search/InputSearch.component";
 import ViewToggleButtons from "../view-toggle-button/ViewToggleButton.component";
 

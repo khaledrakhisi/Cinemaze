@@ -1,4 +1,5 @@
 import IMovie from "../../types/movie";
+
 import {
   ESaveListsActionTypes,
   ISaveListState,
@@ -19,13 +20,14 @@ const saveListReducer = (
       const itemExist: IMovie | undefined = currentState.favouriteList.find(
         (item) => item.id === action.payload.id
       );
+
       let updatedList: Array<IMovie> = currentState.favouriteList;
 
       if (!itemExist) {
         updatedList.push(action.payload);
         updatedList = updatedList.sort((a, b) => {
-          let fa = a.title.toLowerCase(),
-            fb = b.title.toLowerCase();
+          const fa = a.title.toLowerCase();
+          const fb = b.title.toLowerCase();
 
           if (fa < fb) {
             return -1;
@@ -50,8 +52,8 @@ const saveListReducer = (
       if (!itemExist) {
         updatedList.push(action.payload);
         updatedList = updatedList.sort((a, b) => {
-          let fa = a.title.toLowerCase(),
-            fb = b.title.toLowerCase();
+          const fa = a.title.toLowerCase();
+          const fb = b.title.toLowerCase();
 
           if (fa < fb) {
             return -1;

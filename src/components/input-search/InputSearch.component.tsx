@@ -1,16 +1,9 @@
 import React from "react";
+import MicIcon from "@mui/icons-material/Mic";
+import SearchIcon from "@mui/icons-material/Search";
+import { IconButton } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import { makeStyles } from "@mui/styles";
-import MicIcon from "@mui/icons-material/Mic";
-import { IconButton } from "@mui/material";
-
-const useStyles = makeStyles({
-  input: {
-    height: "50px",
-  },
-});
 
 export interface IInputSearchProps {
   id: string;
@@ -23,8 +16,6 @@ export interface IInputSearchProps {
 }
 
 const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
-  const classes = useStyles();
-
   return (
     <TextField
       id={props.id}

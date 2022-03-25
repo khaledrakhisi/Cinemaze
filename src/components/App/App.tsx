@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import styled, { createGlobalStyle } from "styled-components";
 
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { device } from "../../utils/util";
-import NavBottom from "../nav-bottom/NavBottom.component";
-import HomePage from "../../pages/homepage/HomePage.component";
 import FavPage from "../../pages/fav-page/FavPage.component";
-import Header from "../Header/Header.component";
+import HomePage from "../../pages/homepage/HomePage.component";
 import WatchLaterPage from "../../pages/watch-later-page/WatchLaterPage.component";
+import { device } from "../../utils/util";
+import Header from "../Header/Header.component";
+import NavBottom from "../nav-bottom/NavBottom.component";
 
 const GlobalStyle = createGlobalStyle`
 

@@ -1,11 +1,11 @@
 import React from "react";
-
-import { makeStyles } from "@mui/styles";
-import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import { makeStyles } from "@mui/styles";
+
+import IMovie from "../../types/movie";
 
 import MovieItem from "./MovieItem.component";
-import IMovie from "../../types/movie";
 
 const useStyles = makeStyles({
   list: {

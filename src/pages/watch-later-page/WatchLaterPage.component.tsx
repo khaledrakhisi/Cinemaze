@@ -1,12 +1,12 @@
-import { Typography } from "@mui/material";
 import React from "react";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import styled from "styled-components";
 
 import MovieList, {
   EListType,
 } from "../../components/movie-list/MovieList.component";
-import { useSelector } from "react-redux";
 import { TRootStoreType } from "../../redux/store";
 
 const WatchLaterPageStyled = styled.div`

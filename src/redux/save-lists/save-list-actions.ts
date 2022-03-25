@@ -1,4 +1,5 @@
 import IMovie from "../../types/movie";
+
 import { ESaveListsActionTypes } from "./save-list-types";
 
 export const addToFavouritesList = (movie: IMovie) => {

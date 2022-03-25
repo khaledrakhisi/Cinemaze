@@ -1,18 +1,18 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import SearchIconFilled from "@mui/icons-material/Search";
 import SearchIconOutlined from "@mui/icons-material/SearchOutlined";
 import StarIconFilled from "@mui/icons-material/Star";
 import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
 import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
 import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
-import { useDispatch, useSelector } from "react-redux";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
 import { TRootStoreType } from "../../redux/store";
-import { EUITypes } from "../../redux/ui/ui-types";
 import { changeNavTab } from "../../redux/ui/ui-actions";
+import { EUITypes } from "../../redux/ui/ui-types";
 
 const NavBottom: React.FunctionComponent = () => {
   const dispatch = useDispatch();

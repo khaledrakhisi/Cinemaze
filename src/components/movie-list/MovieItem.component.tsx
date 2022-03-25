@@ -1,24 +1,24 @@
 import React from "react";
-
-import { makeStyles } from "@mui/styles";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
-import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
-import StarIconFilled from "@mui/icons-material/Star";
-import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
-import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
-import IconButton from "@mui/material/IconButton";
-
-import IMovie from "../../types/movie";
-import { abbreviateNumber } from "../../utils/util";
 import { useDispatch } from "react-redux";
+import StarIconFilled from "@mui/icons-material/Star";
+import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
+import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
+import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
+import { Box } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+
 import {
   addToFavouritesList,
   addToWatchLaterList,
 } from "../../redux/save-lists/save-list-actions";
+import IMovie from "../../types/movie";
+import { abbreviateNumber } from "../../utils/util";
+
 import { EListType } from "./MovieList.component";
 
 const useStyles = makeStyles({
