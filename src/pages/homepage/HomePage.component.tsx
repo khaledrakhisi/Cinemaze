@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner.component";
 
-import MovieList from "../../components/movie-list/MovieList.component";
+import MovieList, {
+  EListType,
+} from "../../components/movie-list/MovieList.component";
 import SearchArea from "../../components/search-area/SearchArea.component";
-import movies from "../../data/mock-data";
 import { getMovies } from "../../redux/movie/movie-actions";
 import { TRootStoreType } from "../../redux/store";
-import { changeNavTab } from "../../redux/ui/ui-actions";
-import { EUITypes } from "../../redux/ui/ui-types";
 import IMovie from "../../types/movie";
 
 const HomepageStyled = styled.div`
@@ -25,9 +24,7 @@ const HomePage: React.FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
-  // This use Effect is being used for debouncing sake
   useEffect(() => {
-    dispatch(changeNavTab(EUITypes.NAV_TAB_SEARCH));
     if (UIState.inputSearchValue) {
       dispatch(getMovies(UIState.inputSearchValue));
     }
@@ -38,7 +35,7 @@ const HomePage: React.FunctionComponent = () => {
       <SearchArea />
 
       {movie.isLoading && <LoadingSpinner asOverlay />}
-      <MovieList movies={moviesList} />
+      <MovieList movies={moviesList} listType={EListType.LIST_TYPE_SEARCH} />
     </HomepageStyled>
   );
 };

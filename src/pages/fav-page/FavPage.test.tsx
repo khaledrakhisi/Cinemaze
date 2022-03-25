@@ -5,7 +5,7 @@ describe("Favorites Page component tests", () => {
   it("should have Favorites text", () => {
     render(<FavPage />);
 
-    const el = screen.queryByText("Favourites");
+    const el = screen.queryByText(/Favourites/i);
     expect(el).toBeInTheDocument();
   });
 

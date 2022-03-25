@@ -15,7 +15,6 @@ export const getMovies =
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&query=${queryString}&page=${pageNumber}&include_adult=false`
       );
       const data = await response.json();
-      console.log(data);
 
       dispatch({
         type: EMovieActionTypes.MOVIES_FETCH_SUCCESS,
@@ -27,10 +26,3 @@ export const getMovies =
       });
     }
   };
-
-export const toggleFavourite = (id: string) => {
-  return {
-    type: EMovieActionTypes.MOVIES_TOGGLE_FAVOURITE,
-    payload: id,
-  };
-};

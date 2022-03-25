@@ -21,11 +21,21 @@ const useStyles = makeStyles({
   },
 });
 
-interface IMovieListProps {
-  movies: Array<IMovie>;
+export enum EListType {
+  LIST_TYPE_FAVOURITES = "LIST_TYPE_FAVOURITES",
+  LIST_TYPE_SEARCH = "LIST_TYPE_SEARCH",
+  LIST_TYPE_WATCHLATER = "LIST_TYPE_WATCHLATER",
 }
 
-const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
+interface IMovieListProps {
+  movies: Array<IMovie>;
+  listType: EListType;
+}
+
+const MovieList: React.FunctionComponent<IMovieListProps> = ({
+  movies,
+  listType,
+}) => {
   const classes = useStyles();
 
   return (
@@ -36,7 +46,7 @@ const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
       <List className={classes.list}>
         {movies.map((movie) => (
           <React.Fragment key={movie.id}>
-            <MovieItem {...movie} />
+            <MovieItem {...movie} itemType={listType} />
             <Divider
               className={classes.divider}
               variant="inset"

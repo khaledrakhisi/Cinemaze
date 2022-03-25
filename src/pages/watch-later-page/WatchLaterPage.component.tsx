@@ -9,7 +9,7 @@ import MovieList, {
 import { useSelector } from "react-redux";
 import { TRootStoreType } from "../../redux/store";
 
-const FavpageStyled = styled.div`
+const WatchLaterPageStyled = styled.div`
   width: 90vw;
   height: calc(100vh - 120px);
 
@@ -28,19 +28,19 @@ const useStyles = makeStyles({
   },
 });
 
-const FavPage: React.FunctionComponent = () => {
+const WatchLaterPage: React.FunctionComponent = () => {
   const { saveList } = useSelector((state: TRootStoreType) => state);
   const classes = useStyles();
 
   return (
-    <FavpageStyled>
-      <Typography className={classes.pageTitle}>Favourites</Typography>
+    <WatchLaterPageStyled>
+      <Typography className={classes.pageTitle}>Watch Later</Typography>
       <MovieList
-        movies={saveList.favouriteList}
-        listType={EListType.LIST_TYPE_FAVOURITES}
+        movies={saveList.watchLaterList}
+        listType={EListType.LIST_TYPE_WATCHLATER}
       />
-    </FavpageStyled>
+    </WatchLaterPageStyled>
   );
 };
 
-export default FavPage;
+export default WatchLaterPage;

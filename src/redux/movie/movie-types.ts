@@ -4,7 +4,6 @@ export enum EMovieActionTypes {
   MOVIES_FETCH_REQUEST = "MOVIES_FETCH_REQUEST",
   MOVIES_FETCH_SUCCESS = "MOVIES_FETCH_SUCCESS",
   MOVIES_FETCH_FAILURE = "MOVIES_FETCH_FAILURE",
-  MOVIES_TOGGLE_FAVOURITE = "MOVIES_TOGGLE_FAVOURITE",
 }
 
 export interface IMovieRequestResult {
@@ -31,13 +30,5 @@ export interface IMovieSuccess {
 export interface IMovieFailure {
   type: typeof EMovieActionTypes.MOVIES_FETCH_FAILURE;
 }
-export interface IMovieToggleFavourite {
-  type: typeof EMovieActionTypes.MOVIES_TOGGLE_FAVOURITE;
-  payload: string;
-}
 
-export type TMovieDispatchType =
-  | IMovieRequest
-  | IMovieSuccess
-  | IMovieFailure
-  | IMovieToggleFavourite;
+export type TMovieDispatchType = IMovieRequest | IMovieSuccess | IMovieFailure;

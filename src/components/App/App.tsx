@@ -6,6 +6,7 @@ import NavBottom from "../nav-bottom/NavBottom.component";
 import HomePage from "../../pages/homepage/HomePage.component";
 import FavPage from "../../pages/fav-page/FavPage.component";
 import Header from "../Header/Header.component";
+import WatchLaterPage from "../../pages/watch-later-page/WatchLaterPage.component";
 
 const AppStyled = styled.div`
   width: 100vw;
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<HomePage />} />
         <Route path="/favourites" element={<FavPage />} />
-        {/* <Route path="/watch" element={} /> */}
+        <Route path="/watchlater" element={<WatchLaterPage />} />
       </Routes>
       <NavBottomStyled />
     </AppStyled>
