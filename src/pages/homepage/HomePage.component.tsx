@@ -27,7 +27,7 @@ const HomePage: React.FunctionComponent = () => {
     if (UIState.inputSearchValue) {
       dispatch(getMovies(UIState.inputSearchValue));
     }
-  }, [UIState.inputSearchValue]);
+  }, [UIState.inputSearchValue, dispatch]);
 
   return (
     <HomepageStyled>
