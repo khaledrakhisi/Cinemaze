@@ -8,4 +8,6 @@ export default interface IMovie {
   release_date: string;
   overview: string;
   poster_path: string;
+  favourite: boolean;
+  watchLater: boolean;
 }

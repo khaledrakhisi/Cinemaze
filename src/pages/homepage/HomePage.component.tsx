@@ -28,7 +28,9 @@ const HomePage: React.FunctionComponent = () => {
   // This use Effect is being used for debouncing sake
   useEffect(() => {
     dispatch(changeNavTab(EUITypes.NAV_TAB_SEARCH));
-    if (UIState.inputSearchValue) dispatch(getMovies(UIState.inputSearchValue));
+    if (UIState.inputSearchValue) {
+      dispatch(getMovies(UIState.inputSearchValue));
+    }
   }, [UIState.inputSearchValue]);
 
   return (

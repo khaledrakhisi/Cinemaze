@@ -36,6 +36,16 @@ const movieReducer = (
         results: [],
         error: "error happend",
       };
+    case EMovieActionTypes.MOVIES_TOGGLE_FAVOURITE: {
+      const foundIndex = currentState.results.findIndex(
+        (movie) => movie.id === action.payload
+      );
+      currentState.results[foundIndex].favourite =
+        !currentState.results[foundIndex].favourite;
+      return {
+        ...currentState,
+      };
+    }
 
     default:
       return currentState;

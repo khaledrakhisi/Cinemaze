@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -12,12 +13,16 @@ import { changeNavTab } from "../../redux/ui/ui-actions";
 
 const NavBottom: React.FunctionComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { currentNavTab } = useSelector(
     (state: TRootStoreType) => state.UIState
   );
 
   const handleChange = (event: React.SyntheticEvent, newValue: EUITypes) => {
-    if (newValue != null) dispatch(changeNavTab(newValue));
+    if (newValue != null) {
+      dispatch(changeNavTab(newValue));
+      navigate(newValue);
+    }
   };
 
   return (

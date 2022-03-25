@@ -27,6 +27,7 @@ interface IMovieListProps {
 
 const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
   const classes = useStyles();
+
   return (
     <React.Fragment>
       {movies &&
