@@ -12,7 +12,7 @@ import { TRootStoreType } from "../../redux/store";
 const WatchLaterPageStyled = styled.div`
   height: calc(100vh - 120px);
 
-  padding: 0 10px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;

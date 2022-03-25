@@ -12,7 +12,7 @@ import { TRootStoreType } from "../../redux/store";
 const FavpageStyled = styled.div`
   height: calc(100vh - 120px);
 
-  padding: 0 10px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;

@@ -13,6 +13,15 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { TRootStoreType } from "../../redux/store";
 import { changeNavTab } from "../../redux/ui/ui-actions";
 import { EUITypes } from "../../redux/ui/ui-types";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  stickToBottom: {
+    width: "100%",
+    position: "fixed",
+    bottom: 0,
+  },
+});
 
 const NavBottom: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -20,6 +29,7 @@ const NavBottom: React.FunctionComponent = () => {
   const { currentNavTab } = useSelector(
     (state: TRootStoreType) => state.UIState
   );
+  const classes = useStyles();
 
   const handleChange = (event: React.SyntheticEvent, newValue: EUITypes) => {
     if (newValue != null) {
@@ -33,6 +43,7 @@ const NavBottom: React.FunctionComponent = () => {
       value={currentNavTab}
       onChange={handleChange}
       data-testid="nav"
+      className={classes.stickToBottom}
     >
       <BottomNavigationAction
         label="Watch later"

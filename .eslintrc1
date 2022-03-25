@@ -80,9 +80,9 @@
       "no-implicit-coercion": "error",
       "no-param-reassign": "error",
       "no-return-assign": "error",
-      "no-unused-expressions": "off",
-      "no-useless-return": "error",
-      "comma-dangle": ["warning", {
+      // "no-unused-expressions": "`",
+      // "no-useless-return": "off",
+      "comma-dangle": ["warn", {
         "arrays": "only-multiline",
         "objects": "only-multiline",
         "imports": "only-multiline",

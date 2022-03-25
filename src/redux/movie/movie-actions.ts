@@ -9,11 +9,9 @@ export const getMovies =
         type: EMovieActionTypes.MOVIES_FETCH_REQUEST,
       });
 
-      const API_KEY = "0711939789d03a8c0a723db295e9f198";
-      const API_LANGUAGE = "en-US";
       const pageNumber = "1";
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&query=${queryString}&page=${pageNumber}&include_adult=false`
+        `${process.env.REACT_APP_API_URL}?api_key=${process.env.REACT_APP_API_KEY}&language=${process.env.REACT_APP_API_LANGUAGE}&query=${queryString}&page=${pageNumber}&include_adult=false`
       );
       const data = await response.json();
 

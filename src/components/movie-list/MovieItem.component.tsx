@@ -48,12 +48,13 @@ const useStyles = makeStyles({
     color: "#000",
     maxHeight: "75px",
     fontSize: ".8rem",
-    textAlign: "justify",
+    // textAlign: "justify",
     lineHeight: "1.3",
     WebkitBoxOrient: "vertical",
     overflow: "hidden",
     display: "-webkit-box",
     WebkitLineClamp: "4",
+    // wordBreak: "break-all",
   },
   primaryTypographyProps: {
     color: "blue",
@@ -104,7 +105,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
           className={classes.poster}
           component="img"
           alt="none"
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`${process.env.REACT_APP_API_POSTER_URL}${movie.poster_path}`}
         />
       </ListItemAvatar>
       <ListItemText

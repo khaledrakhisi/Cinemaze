@@ -14,7 +14,7 @@ import IMovie from "../../types/movie";
 const HomepageStyled = styled.div`
   height: calc(100vh - 120px);
 
-  padding: 0 10px;
+  padding: 10px;
 `;
 
 const HomePage: React.FunctionComponent = () => {

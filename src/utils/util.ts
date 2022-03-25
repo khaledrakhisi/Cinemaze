@@ -33,10 +33,9 @@ export function abbreviateNumber(value: number): string {
             : value
           ).toPrecision(precision)
         );
-        const dotLessShortValue = (shortValue + "").replace(
-          /[^a-zA-Z 0-9]+/g,
-          ""
-        );
+        const dotLessShortValue = shortValue
+          .toString()
+          .replace(/[^a-zA-Z 0-9]+/g, "");
         if (dotLessShortValue.length <= 2) {
           break;
         }
@@ -47,7 +46,6 @@ export function abbreviateNumber(value: number): string {
   } catch (err) {
     console.error(err);
     return value.toString();
-  } finally {
-    return newValue;
   }
+  return newValue;
 }
