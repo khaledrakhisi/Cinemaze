@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 });
 
 const HomePage: React.FunctionComponent = () => {
-  const { results, isLoading } = useSelector(
+  const { results, isLoading, error } = useSelector(
     (state: TRootStoreType) => state.movie
   );
   const { currentViewStyle, inputSearchValue } = useSelector(

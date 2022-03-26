@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import { fetchWithTimeout } from "../../utils/util";
 
 import {
   EMovieDetailsActionTypes,
@@ -16,7 +17,7 @@ export const getMovies =
       });
 
       const pageNumber = "1";
-      const response = await fetch(
+      const response = await fetchWithTimeout(
         `${process.env.REACT_APP_API_URL}?api_key=${process.env.REACT_APP_API_KEY}&language=${process.env.REACT_APP_API_LANGUAGE}&query=${queryString}&page=${pageNumber}&include_adult=false`
       );
       const data = await response.json();
@@ -40,7 +41,7 @@ export const getMovieDetails =
         type: EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_REQUEST,
       });
 
-      const response = await fetch(
+      const response = await fetchWithTimeout(
         `${process.env.REACT_APP_API_DETAIL_URL}/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=${process.env.REACT_APP_API_LANGUAGE}&append_to_response=videos`
       );
       const data = await response.json();

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import NavBottom from "./NavBottom.component";
 
 describe("Navigation component tests", () => {

@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import styled, { createGlobalStyle } from "styled-components";
@@ -13,7 +14,7 @@ import NavBottom from "../nav-bottom/NavBottom.component";
 const GlobalStyle = createGlobalStyle`
 
 body {
-  padding: 0;  
+  padding: 0;
 }
 
 a {
@@ -57,7 +58,7 @@ function App() {
    */
   const isGreaterThanTablet = useMediaQuery(device.tablet);
   return (
-    <>
+    <React.Fragment>
       <GlobalStyle />
       <AppStyled>
         <Header />
@@ -70,7 +71,7 @@ function App() {
          */}
         {!isGreaterThanTablet && <NavBottom />}
       </AppStyled>
-    </>
+    </React.Fragment>
   );
 }
 
