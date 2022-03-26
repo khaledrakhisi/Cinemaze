@@ -1,12 +1,13 @@
-import { IconButton } from "@mui/material";
 import React from "react";
-import styled from "styled-components";
-import IMovie from "../../types/movie";
 import StarIconFilled from "@mui/icons-material/Star";
 import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
 import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
 import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
+import { IconButton } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import styled from "styled-components";
+
+import IMovie from "../../types/movie";
 import { abbreviateNumber } from "../../utils/util";
 
 const DetailsBar = styled.div`
@@ -60,7 +61,7 @@ const useStyles = makeStyles({
     padding: "0 5px",
     marginLeft: "auto",
   },
-  iconButton: {
+  icon: {
     color: "yellow",
   },
 });
@@ -101,6 +102,12 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
   } = props;
   const classes = useStyles();
 
+  /* Extracting Year from release date*/
+  let releasedYear = "";
+  if (release_date.includes("-")) {
+    releasedYear = release_date.slice(0, release_date.indexOf("-"));
+  }
+
   return (
     <MovieContainer
       style={{
@@ -111,34 +118,26 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
       }}
     >
       <DetailsBar>
-        <TextStyled>
-          {release_date.slice(0, release_date.indexOf("-"))}
-        </TextStyled>
+        <TextStyled>{releasedYear}</TextStyled>
         <TextStyled>
           {vote_average} / {abbreviateNumber(vote_count)}
         </TextStyled>
         <div className={classes.favAndWatchlaterButtons}>
           {showWatchlaterButton && (
-            <IconButton
-              className={classes.iconButton}
-              onClick={(e) => onWatchLaterButtonClicked(e, props)}
-            >
+            <IconButton onClick={(e) => onWatchLaterButtonClicked(e, props)}>
               {watchLaterButtonAsFilled ? (
-                <WatchLaterIconFilled />
+                <WatchLaterIconFilled className={classes.icon} />
               ) : (
-                <WatchLaterIconOutlined />
+                <WatchLaterIconOutlined className={classes.icon} />
               )}
             </IconButton>
           )}
           {showFavouritesButton && (
-            <IconButton
-              className={classes.iconButton}
-              onClick={(e) => onFavouritesButtonClicked(e, props)}
-            >
+            <IconButton onClick={(e) => onFavouritesButtonClicked(e, props)}>
               {favouritesButtonAsFilled ? (
-                <StarIconFilled />
+                <StarIconFilled className={classes.icon} />
               ) : (
-                <StarIconOutlined />
+                <StarIconOutlined className={classes.icon} />
               )}
             </IconButton>
           )}

@@ -7,8 +7,8 @@ import HomePage from "../../pages/homepage/HomePage.component";
 import WatchLaterPage from "../../pages/watch-later-page/WatchLaterPage.component";
 import { device } from "../../utils/util";
 import Header from "../header/Header.component";
-import NavBottom from "../nav-bottom/NavBottom.component";
 import MovieDetails from "../movie-detail/MovieDetail.component";
+import NavBottom from "../nav-bottom/NavBottom.component";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -38,6 +38,8 @@ const AppStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  margin-top: 57px;
 `;
 
 const routes = (
@@ -59,8 +61,13 @@ function App() {
       <GlobalStyle />
       <AppStyled>
         <Header />
+        {/* This component is modal component and appears when a
+        redux dispatch named "toggleModalVisibility" triggers */}
         <MovieDetails />
         {routes}
+        {/*
+        If the user device is desktop, then avoid showing the Navigation Bar at the bottom
+         */}
         {!isGreaterThanTablet && <NavBottom />}
       </AppStyled>
     </>

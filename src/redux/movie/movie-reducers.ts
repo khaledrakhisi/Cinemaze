@@ -85,4 +85,4 @@ const movieDetailReducer = (
   }
 };
 
-export { movieSearchReducer, movieDetailReducer };
+export { movieDetailReducer, movieSearchReducer };

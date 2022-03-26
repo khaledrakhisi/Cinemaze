@@ -21,9 +21,10 @@ const useStyles = makeStyles({
     marginBottom: "5px",
     borderRadius: "5px",
     border: "1px solid #e4e4eb",
+    cursor: "pointer",
   },
   title: {
-    color: "#1976d2",
+    color: "#2E3B55",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
@@ -78,6 +79,9 @@ const useStyles = makeStyles({
   iconButton: {
     padding: "2px 5px",
   },
+  icon: {
+    color: "#2E3B55",
+  },
 });
 
 interface IMovieItemProps extends IMovie {
@@ -85,12 +89,23 @@ interface IMovieItemProps extends IMovie {
   showWatchlaterButton: boolean;
   favouritesButtonAsFilled: boolean;
   watchLaterButtonAsFilled: boolean;
-  onFavouritesButtonClicked: (e: any, movieItem: IMovie) => void;
-  onWatchLaterButtonClicked: (e: any, movieItem: IMovie) => void;
+  onFavouritesButtonClicked: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => void;
+  onWatchLaterButtonClicked: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => void;
+  onClickHandle: (
+    event: React.MouseEvent<HTMLLIElement>,
+    movieId: string
+  ) => void;
 }
 
 const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
   const {
+    id,
     title,
     overview,
     release_date,
@@ -103,11 +118,24 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
     watchLaterButtonAsFilled,
     onFavouritesButtonClicked,
     onWatchLaterButtonClicked,
+    onClickHandle,
   } = props;
   const classes = useStyles();
 
+  /* Extracting Year from release date*/
+  let releasedYear = "";
+  if (release_date.includes("-")) {
+    releasedYear = release_date.slice(0, release_date.indexOf("-"));
+  }
+
   return (
-    <ListItem alignItems="flex-start" className={classes.container}>
+    <ListItem
+      alignItems="flex-start"
+      className={classes.container}
+      onClick={(e) => {
+        onClickHandle(e, id);
+      }}
+    >
       <ListItemAvatar>
         <Box
           className={classes.poster}
@@ -131,9 +159,9 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
                     onClick={(e) => onWatchLaterButtonClicked(e, props)}
                   >
                     {watchLaterButtonAsFilled ? (
-                      <WatchLaterIconFilled />
+                      <WatchLaterIconFilled className={classes.icon} />
                     ) : (
-                      <WatchLaterIconOutlined />
+                      <WatchLaterIconOutlined className={classes.icon} />
                     )}
                   </IconButton>
                 )}
@@ -143,16 +171,16 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
                     onClick={(e) => onFavouritesButtonClicked(e, props)}
                   >
                     {favouritesButtonAsFilled ? (
-                      <StarIconFilled />
+                      <StarIconFilled className={classes.icon} />
                     ) : (
-                      <StarIconOutlined />
+                      <StarIconOutlined className={classes.icon} />
                     )}
                   </IconButton>
                 )}
               </div>
             </div>
             <Typography className={classes.releaseDate}>
-              <span>{release_date}</span>
+              <span>{releasedYear}</span>
             </Typography>
 
             <Typography className={classes.overview}>{overview}</Typography>

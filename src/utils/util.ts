@@ -24,7 +24,7 @@ export function abbreviateNumber(value: number): string {
   try {
     if (value >= 1000) {
       const suffixes = ["", "k", "m", "b", "t"];
-      const suffixNum = Math.floor(("" + value).length / 3);
+      const suffixNum = Math.floor(value.toString().length / 3);
       let shortValue: number | string = 0;
       for (let precision = 2; precision >= 1; precision--) {
         shortValue = parseFloat(
@@ -40,7 +40,9 @@ export function abbreviateNumber(value: number): string {
           break;
         }
       }
-      if (shortValue % 1 !== 0) shortValue = shortValue.toFixed(1);
+      if (shortValue % 1 !== 0) {
+        shortValue = shortValue.toFixed(1);
+      }
       newValue = shortValue + suffixes[suffixNum];
     }
   } catch (err) {

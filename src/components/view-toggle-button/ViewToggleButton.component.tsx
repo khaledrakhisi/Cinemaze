@@ -2,8 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ViewListIcon from "@mui/icons-material/ViewList";
-// import ViewModuleIcon from "@mui/icons-material/ViewModuleOutlined";
-// import { useMediaQuery } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { makeStyles } from "@mui/styles";
@@ -14,7 +12,7 @@ import { EUITypes } from "../../redux/ui/ui-types";
 
 const useStyles = makeStyles({
   toggleButtonGroup: {
-    marginRight: "0",
+    marginLeft: "auto",
     padding: "0",
   },
 });

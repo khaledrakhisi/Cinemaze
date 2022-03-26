@@ -1,18 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Container } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
+import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
 
 import { TRootStoreType } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
 import { toggleModalVisibility } from "../../redux/ui/ui-actions";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner.component";
-import { makeStyles } from "@mui/styles";
-import { Container } from "@mui/material";
 import YoutubeEmbed from "../youtube-embed/YoutubeEmbed.component";
-import IMovie from "../../types/movie";
 
 const style = {
   position: "absolute" as "absolute",
@@ -144,11 +143,13 @@ const MovieDetails: React.FunctionComponent = () => {
               >
                 {overview}
               </Typography>
-              {videos?.results &&
-                videos?.results.length > 0 &&
-                videos.results.map((video) => (
-                  <YoutubeEmbed embedId={`${video.key}`} />
-                ))}
+              <Container>
+                {videos?.results &&
+                  videos?.results.length > 0 &&
+                  videos.results.map((video) => (
+                    <YoutubeEmbed key={video.id} embedId={`${video.key}`} />
+                  ))}
+              </Container>
             </Container>
           </Fade>
         </Modal>

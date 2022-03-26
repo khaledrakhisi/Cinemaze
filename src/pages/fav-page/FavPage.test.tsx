@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import FavPage from "./FavPage.component";
 
 describe("Favorites Page component tests", () => {

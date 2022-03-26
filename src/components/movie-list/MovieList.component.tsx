@@ -1,23 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import List from "@mui/material/List";
 import { makeStyles } from "@mui/styles";
 
-import IMovie from "../../types/movie";
-
-import MovieItem from "./MovieItem.component";
-import { useDispatch, useSelector } from "react-redux";
-import { TRootStoreType } from "../../redux/store";
-import { EUITypes } from "../../redux/ui/ui-types";
+import { getMovieDetails } from "../../redux/movie/movie-actions";
 import {
   addToFavouritesList,
   addToWatchLaterList,
 } from "../../redux/save-lists/save-list-actions";
+import { TRootStoreType } from "../../redux/store";
+import { toggleModalVisibility } from "../../redux/ui/ui-actions";
+import { EUITypes } from "../../redux/ui/ui-types";
+import IMovie from "../../types/movie";
+
+import MovieItem from "./MovieItem.component";
 
 const useStyles = makeStyles({
   list: {
     width: "100%",
     bgcolor: "background.paper",
-    maxHeight: "85%",
+    // maxHeight: "85%",
     minHeight: "100px",
     overflow: "auto",
     padding: "5px",
@@ -42,16 +44,32 @@ const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
     (state: TRootStoreType) => state.saveList
   );
 
-  const favouriteButtonClickHandle = (e: any, movieItem: IMovie) => {
-    console.log(movieItem);
-
+  const favouriteButtonClickHandle = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => {
+    event.stopPropagation();
     dispatch(addToFavouritesList(movieItem));
   };
-  const watchLaterButtonClickHandle = (e: any, movieItem: IMovie) => {
+  const watchLaterButtonClickHandle = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => {
+    event.stopPropagation();
     dispatch(addToWatchLaterList(movieItem));
   };
+  const itemClickedHandle = (
+    event: React.MouseEvent<HTMLLIElement>,
+    movieId: string
+  ) => {
+    // First, fetch the selected movie details from the API
+    dispatch(getMovieDetails(movieId));
 
-  /* 
+    // second show movie details or error
+    dispatch(toggleModalVisibility());
+  };
+
+  /*
     In this section we will decide to show the fav and wl buttons in respective pages
   */
   const showFavButton =
@@ -85,6 +103,7 @@ const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
               watchLaterButtonAsFilled={watchlaterFilled}
               onFavouritesButtonClicked={favouriteButtonClickHandle}
               onWatchLaterButtonClicked={watchLaterButtonClickHandle}
+              onClickHandle={itemClickedHandle}
             />
           );
         })}

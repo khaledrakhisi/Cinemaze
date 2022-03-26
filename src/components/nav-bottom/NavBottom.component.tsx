@@ -21,6 +21,9 @@ const useStyles = makeStyles({
     position: "fixed",
     bottom: 0,
   },
+  icon: {
+    color: "#2E3B55",
+  },
 });
 
 const NavBottom: React.FunctionComponent = () => {
@@ -50,9 +53,9 @@ const NavBottom: React.FunctionComponent = () => {
         value={EUITypes.NAV_TAB_WATCHLATER}
         icon={
           currentNavTab === EUITypes.NAV_TAB_WATCHLATER ? (
-            <WatchLaterIconFilled />
+            <WatchLaterIconFilled className={classes.icon} />
           ) : (
-            <WatchLaterIconOutlined />
+            <WatchLaterIconOutlined className={classes.icon} />
           )
         }
       />
@@ -61,9 +64,9 @@ const NavBottom: React.FunctionComponent = () => {
         value={EUITypes.NAV_TAB_SEARCH}
         icon={
           currentNavTab === EUITypes.NAV_TAB_SEARCH ? (
-            <SearchIconFilled />
+            <SearchIconFilled className={classes.icon} />
           ) : (
-            <SearchIconOutlined />
+            <SearchIconOutlined className={classes.icon} />
           )
         }
       />
@@ -73,9 +76,9 @@ const NavBottom: React.FunctionComponent = () => {
         value={EUITypes.NAV_TAB_FAVORITES}
         icon={
           currentNavTab === EUITypes.NAV_TAB_FAVORITES ? (
-            <StarIconFilled />
+            <StarIconFilled className={classes.icon} />
           ) : (
-            <StarIconOutlined />
+            <StarIconOutlined className={classes.icon} />
           )
         }
       />

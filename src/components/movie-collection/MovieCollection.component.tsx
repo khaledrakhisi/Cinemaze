@@ -1,19 +1,18 @@
 import React from "react";
-
-import IMovie from "../../types/movie";
-import MovieThumb from "../movie-collection/MovieThumb.component";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { useHorizontalScroll } from "../../hooks/useHorizontallScroll";
-import { TRootStoreType } from "../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { EUITypes } from "../../redux/ui/ui-types";
+import { getMovieDetails } from "../../redux/movie/movie-actions";
 import {
   addToFavouritesList,
   addToWatchLaterList,
 } from "../../redux/save-lists/save-list-actions";
+import { TRootStoreType } from "../../redux/store";
 import { toggleModalVisibility } from "../../redux/ui/ui-actions";
-import { getMovieDetails } from "../../redux/movie/movie-actions";
+import { EUITypes } from "../../redux/ui/ui-types";
+import IMovie from "../../types/movie";
+import MovieThumb from "../movie-collection/MovieThumb.component";
 
 const MovieCollecionContainer = styled.div`
   display: flex;
@@ -47,14 +46,14 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
     event: React.MouseEvent<HTMLButtonElement>,
     movieItem: IMovie
   ) => {
-    console.log(movieItem);
-
+    event.stopPropagation();
     dispatch(addToFavouritesList(movieItem));
   };
   const watchLaterButtonClickHandle = (
     event: React.MouseEvent<HTMLButtonElement>,
     movieItem: IMovie
   ) => {
+    event.stopPropagation();
     dispatch(addToWatchLaterList(movieItem));
   };
   const itemClickedHandle = (
@@ -68,7 +67,7 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
     dispatch(toggleModalVisibility());
   };
 
-  /* 
+  /*
     In this section we will decide to show the fav and wl buttons in respective pages
   */
   const showFavButton =
@@ -83,8 +82,8 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
       {movies &&
         movies.length === 0 &&
         "The list is empty, type something in the search textbox. you can use voice command too!"}
-
       <MovieCollecionContainer ref={scrollRef}>
+        {/* {isLoading && <LoadingSpinner asOverlay />} */}
         {movies.map((movie: IMovie) => {
           // check if the movie exist in the fav list for every item
           const favFilled =

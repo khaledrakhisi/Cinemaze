@@ -26,7 +26,7 @@ const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
       name={props.name}
       required={props.required}
       InputProps={{
-        style: { height: "50px", marginRight: "10px" },
+        style: { height: "40px", marginRight: "10px" },
         startAdornment: (
           <InputAdornment position="start">
             <SearchIcon />

@@ -8,8 +8,20 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  stickToTop: {
+    width: "100%",
+    position: "fixed",
+    top: 0,
+    zIndex: 10,
+  },
+});
 
 const Header: React.FunctionComponent = () => {
+  const classes = useStyles();
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,8 +33,8 @@ const Header: React.FunctionComponent = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }} className={classes.stickToTop}>
+      <AppBar position="static" style={{ background: "#2E3B55" }}>
         <Toolbar>
           <IconButton
             size="large"

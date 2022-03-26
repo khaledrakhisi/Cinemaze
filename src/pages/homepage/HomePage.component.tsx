@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import { makeStyles } from "@mui/styles";
+import styled from "styled-components";
 
 import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner.component";
 import MovieCollection from "../../components/movie-collection/MovieCollection.component";
@@ -16,6 +18,21 @@ const HomepageStyled = styled.div`
 
   padding: 10px;
 `;
+const SectionSearchStyled = styled.div`
+  position: relative;
+`;
+const SectionListStyled = styled.div`
+  position: relative;
+  height: 100%;
+`;
+
+const useStyles = makeStyles({
+  sectionTitle: {
+    color: "#2E3B55",
+    fontWeight: "bold",
+    fontSize: "20px",
+  },
+});
 
 const HomePage: React.FunctionComponent = () => {
   const { results, isLoading } = useSelector(
@@ -29,6 +46,7 @@ const HomePage: React.FunctionComponent = () => {
   );
 
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
     if (inputSearchValue) {
@@ -39,17 +57,21 @@ const HomePage: React.FunctionComponent = () => {
   return (
     <HomepageStyled>
       <SearchArea />
-
-      {isLoading && <LoadingSpinner asOverlay />}
       {currentViewStyle === EUITypes.VIEW_STYLE_LISTVIEW ? (
-        <MovieList movies={results} />
+        <SectionListStyled>
+          {isLoading && <LoadingSpinner asOverlay />}
+          <MovieList movies={results} />
+        </SectionListStyled>
       ) : (
         <React.Fragment>
-          <MovieCollection movies={results} />
-          {"Favourites"}
+          <SectionSearchStyled>
+            {isLoading && <LoadingSpinner asOverlay />}
+            <MovieCollection movies={results} />
+          </SectionSearchStyled>
+          <Typography className={classes.sectionTitle}>Favourites</Typography>
           <Divider />
           <MovieCollection movies={favouriteList} />
-          {"Watch later"}
+          <Typography className={classes.sectionTitle}>Watch later</Typography>
           <Divider />
           <MovieCollection movies={watchLaterList} />
         </React.Fragment>
