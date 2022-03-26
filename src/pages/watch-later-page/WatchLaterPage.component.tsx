@@ -4,9 +4,7 @@ import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import styled from "styled-components";
 
-import MovieList, {
-  EListType,
-} from "../../components/movie-list/MovieList.component";
+import MovieList from "../../components/movie-list/MovieList.component";
 import { TRootStoreType } from "../../redux/store";
 
 const WatchLaterPageStyled = styled.div`
@@ -34,10 +32,7 @@ const WatchLaterPage: React.FunctionComponent = () => {
   return (
     <WatchLaterPageStyled>
       <Typography className={classes.pageTitle}>Watch Later</Typography>
-      <MovieList
-        movies={saveList.watchLaterList}
-        listType={EListType.LIST_TYPE_WATCHLATER}
-      />
+      <MovieList movies={saveList.watchLaterList} />
     </WatchLaterPageStyled>
   );
 };

@@ -40,6 +40,15 @@ const AppStyled = styled.div`
   justify-content: flex-start;
 `;
 
+const routes = (
+  <Routes>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/search" element={<HomePage />} />
+    <Route path="/favourites" element={<FavPage />} />
+    <Route path="/watchlater" element={<WatchLaterPage />} />
+  </Routes>
+);
+
 function App() {
   /*
     I'm using useNediaQuery Hook from MaterialUI to run media query breakpoints
@@ -50,13 +59,7 @@ function App() {
       <GlobalStyle />
       <AppStyled>
         <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<HomePage />} />
-          <Route path="/favourites" element={<FavPage />} />
-          <Route path="/watchlater" element={<WatchLaterPage />} />
-        </Routes>
-
+        {routes}
         {!isGreaterThanTablet && <NavBottom />}
       </AppStyled>
     </>

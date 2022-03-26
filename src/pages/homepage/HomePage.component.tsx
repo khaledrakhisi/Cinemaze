@@ -5,9 +5,7 @@ import Divider from "@mui/material/Divider";
 
 import LoadingSpinner from "../../components/loading-spinner/LoadingSpinner.component";
 import MovieCollection from "../../components/movie-collection/MovieCollection.component";
-import MovieList, {
-  EListType,
-} from "../../components/movie-list/MovieList.component";
+import MovieList from "../../components/movie-list/MovieList.component";
 import SearchArea from "../../components/search-area/SearchArea.component";
 import { getMovies } from "../../redux/movie/movie-actions";
 import { TRootStoreType } from "../../redux/store";
@@ -44,25 +42,16 @@ const HomePage: React.FunctionComponent = () => {
 
       {isLoading && <LoadingSpinner asOverlay />}
       {currentViewStyle === EUITypes.VIEW_STYLE_LISTVIEW ? (
-        <MovieList movies={results} listType={EListType.LIST_TYPE_SEARCH} />
+        <MovieList movies={results} />
       ) : (
         <React.Fragment>
-          <MovieCollection
-            movies={results}
-            listType={EListType.LIST_TYPE_SEARCH}
-          />
+          <MovieCollection movies={results} />
           {"Favourites"}
           <Divider />
-          <MovieCollection
-            movies={favouriteList}
-            listType={EListType.LIST_TYPE_SEARCH}
-          />
+          <MovieCollection movies={favouriteList} />
           {"Watch later"}
           <Divider />
-          <MovieCollection
-            movies={watchLaterList}
-            listType={EListType.LIST_TYPE_SEARCH}
-          />
+          <MovieCollection movies={watchLaterList} />
         </React.Fragment>
       )}
     </HomepageStyled>

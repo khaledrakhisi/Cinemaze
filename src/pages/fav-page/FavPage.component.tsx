@@ -4,9 +4,7 @@ import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import styled from "styled-components";
 
-import MovieList, {
-  EListType,
-} from "../../components/movie-list/MovieList.component";
+import MovieList from "../../components/movie-list/MovieList.component";
 import { TRootStoreType } from "../../redux/store";
 
 const FavpageStyled = styled.div`
@@ -34,10 +32,7 @@ const FavPage: React.FunctionComponent = () => {
   return (
     <FavpageStyled>
       <Typography className={classes.pageTitle}>Favourites</Typography>
-      <MovieList
-        movies={saveList.favouriteList}
-        listType={EListType.LIST_TYPE_FAVOURITES}
-      />
+      <MovieList movies={saveList.favouriteList} />
     </FavpageStyled>
   );
 };

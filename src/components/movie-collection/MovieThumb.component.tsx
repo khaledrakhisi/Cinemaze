@@ -2,12 +2,12 @@ import { IconButton } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import IMovie from "../../types/movie";
-import { EListType } from "./MovieCollection.component";
 import StarIconFilled from "@mui/icons-material/Star";
 import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
 import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
 import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
 import { makeStyles } from "@mui/styles";
+import { abbreviateNumber } from "../../utils/util";
 
 const DetailsBar = styled.div`
   position: absolute;
@@ -21,6 +21,10 @@ const DetailsBar = styled.div`
   text-align: center;
 
   cursor: auto;
+`;
+const TextStyled = styled.div`
+  color: #fff;
+  font-size: 14px;
 `;
 const MovieContainer = styled.div`
   display: flex;
@@ -57,18 +61,34 @@ const useStyles = makeStyles({
     marginLeft: "auto",
   },
   iconButton: {
-    padding: "2px 5px",
     color: "yellow",
   },
 });
 
 interface IMovieThumbProps extends IMovie {
-  itemType: EListType;
+  showFavouritesButton: boolean;
+  showWatchlaterButton: boolean;
+  favouritesButtonAsFilled: boolean;
+  watchLaterButtonAsFilled: boolean;
+  onFavouritesButtonClicked: (e: any, movieItem: IMovie) => void;
+  onWatchLaterButtonClicked: (e: any, movieItem: IMovie) => void;
 }
 
-const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (movie) => {
-  const { release_date, poster_path, vote_average, vote_count } = movie;
+const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
+  const {
+    release_date,
+    poster_path,
+    vote_average,
+    vote_count,
+    showFavouritesButton,
+    showWatchlaterButton,
+    favouritesButtonAsFilled,
+    watchLaterButtonAsFilled,
+    onFavouritesButtonClicked,
+    onWatchLaterButtonClicked,
+  } = props;
   const classes = useStyles();
+
   return (
     <MovieContainer
       style={{
@@ -76,31 +96,33 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (movie) => {
       }}
     >
       <DetailsBar>
+        <TextStyled>
+          {release_date.slice(0, release_date.indexOf("-"))}
+        </TextStyled>
+        <TextStyled>
+          {vote_average} / {abbreviateNumber(vote_count)}
+        </TextStyled>
         <div className={classes.favAndWatchlaterButtons}>
-          {(movie.itemType === EListType.LIST_TYPE_WATCHLATER ||
-            movie.itemType === EListType.LIST_TYPE_SEARCH) && (
+          {showWatchlaterButton && (
             <IconButton
               className={classes.iconButton}
-              // onClick={watchLaterButtonClickHandle}
+              onClick={(e) => onWatchLaterButtonClicked(e, props)}
             >
-              {movie.itemType === EListType.LIST_TYPE_WATCHLATER && (
+              {watchLaterButtonAsFilled ? (
                 <WatchLaterIconFilled />
-              )}
-              {movie.itemType === EListType.LIST_TYPE_SEARCH && (
+              ) : (
                 <WatchLaterIconOutlined />
               )}
             </IconButton>
           )}
-          {(movie.itemType === EListType.LIST_TYPE_FAVOURITES ||
-            movie.itemType === EListType.LIST_TYPE_SEARCH) && (
+          {showFavouritesButton && (
             <IconButton
               className={classes.iconButton}
-              // onClick={favouriteButtonClickHandle}
+              onClick={(e) => onFavouritesButtonClicked(e, props)}
             >
-              {movie.itemType === EListType.LIST_TYPE_FAVOURITES && (
+              {favouritesButtonAsFilled ? (
                 <StarIconFilled />
-              )}
-              {movie.itemType === EListType.LIST_TYPE_SEARCH && (
+              ) : (
                 <StarIconOutlined />
               )}
             </IconButton>

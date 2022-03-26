@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import StarIconFilled from "@mui/icons-material/Star";
 import StarIconOutlined from "@mui/icons-material/StarBorderOutlined";
 import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
@@ -12,14 +11,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 
-import {
-  addToFavouritesList,
-  addToWatchLaterList,
-} from "../../redux/save-lists/save-list-actions";
 import IMovie from "../../types/movie";
 import { abbreviateNumber } from "../../utils/util";
-
-import { EListType } from "./MovieList.component";
 
 const useStyles = makeStyles({
   container: {
@@ -88,19 +81,30 @@ const useStyles = makeStyles({
 });
 
 interface IMovieItemProps extends IMovie {
-  itemType: EListType;
+  showFavouritesButton: boolean;
+  showWatchlaterButton: boolean;
+  favouritesButtonAsFilled: boolean;
+  watchLaterButtonAsFilled: boolean;
+  onFavouritesButtonClicked: (e: any, movieItem: IMovie) => void;
+  onWatchLaterButtonClicked: (e: any, movieItem: IMovie) => void;
 }
 
-const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
+const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
+  const {
+    title,
+    overview,
+    release_date,
+    poster_path,
+    vote_average,
+    vote_count,
+    showFavouritesButton,
+    showWatchlaterButton,
+    favouritesButtonAsFilled,
+    watchLaterButtonAsFilled,
+    onFavouritesButtonClicked,
+    onWatchLaterButtonClicked,
+  } = props;
   const classes = useStyles();
-  const dispatch = useDispatch();
-
-  const favouriteButtonClickHandle = () => {
-    dispatch(addToFavouritesList(movie));
-  };
-  const watchLaterButtonClickHandle = () => {
-    dispatch(addToWatchLaterList(movie));
-  };
 
   return (
     <ListItem alignItems="flex-start" className={classes.container}>
@@ -109,44 +113,38 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
           className={classes.poster}
           component="img"
           alt="none"
-          src={`${process.env.REACT_APP_API_POSTER_URL}${movie.poster_path}`}
+          src={`${process.env.REACT_APP_API_POSTER_URL}${poster_path}`}
         />
       </ListItemAvatar>
       <ListItemText
-        primary={<div className={classes.title}>{movie.title}</div>}
+        primary={<div className={classes.title}>{title}</div>}
         primaryTypographyProps={{ component: "div" }}
         secondaryTypographyProps={{ component: "div" }}
         secondary={
           <React.Fragment>
             <div className={classes.vote}>
-              <span>{`${movie.vote_average} / ${abbreviateNumber(
-                movie.vote_count
-              )}`}</span>
+              <span>{`${vote_average} / ${abbreviateNumber(vote_count)}`}</span>
               <div className={classes.favAndWatchlaterButtons}>
-                {(movie.itemType === EListType.LIST_TYPE_WATCHLATER ||
-                  movie.itemType === EListType.LIST_TYPE_SEARCH) && (
+                {showWatchlaterButton && (
                   <IconButton
                     className={classes.iconButton}
-                    onClick={watchLaterButtonClickHandle}
+                    onClick={(e) => onWatchLaterButtonClicked(e, props)}
                   >
-                    {movie.itemType === EListType.LIST_TYPE_WATCHLATER && (
+                    {watchLaterButtonAsFilled ? (
                       <WatchLaterIconFilled />
-                    )}
-                    {movie.itemType === EListType.LIST_TYPE_SEARCH && (
+                    ) : (
                       <WatchLaterIconOutlined />
                     )}
                   </IconButton>
                 )}
-                {(movie.itemType === EListType.LIST_TYPE_FAVOURITES ||
-                  movie.itemType === EListType.LIST_TYPE_SEARCH) && (
+                {showFavouritesButton && (
                   <IconButton
                     className={classes.iconButton}
-                    onClick={favouriteButtonClickHandle}
+                    onClick={(e) => onFavouritesButtonClicked(e, props)}
                   >
-                    {movie.itemType === EListType.LIST_TYPE_FAVOURITES && (
+                    {favouritesButtonAsFilled ? (
                       <StarIconFilled />
-                    )}
-                    {movie.itemType === EListType.LIST_TYPE_SEARCH && (
+                    ) : (
                       <StarIconOutlined />
                     )}
                   </IconButton>
@@ -154,12 +152,10 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
               </div>
             </div>
             <Typography className={classes.releaseDate}>
-              <span>{movie.release_date}</span>
+              <span>{release_date}</span>
             </Typography>
 
-            <Typography className={classes.overview}>
-              {movie.overview}
-            </Typography>
+            <Typography className={classes.overview}>{overview}</Typography>
           </React.Fragment>
         }
       />

@@ -16,7 +16,7 @@ const saveListReducer = (
   action: TSaveListDispatchAction
 ): ISaveListState => {
   switch (action.type) {
-    case ESaveListsActionTypes.FAVOURITE_ADD_TO_LIST: {
+    case ESaveListsActionTypes.FAVOURITE_ADDREMOVE_TO_LIST: {
       const itemExist: IMovie | undefined = currentState.favouriteList.find(
         (item) => item.id === action.payload.id
       );
@@ -37,13 +37,17 @@ const saveListReducer = (
           }
           return 0;
         });
+      } else if (itemExist) {
+        updatedList = updatedList.filter(
+          (item) => item.id !== action.payload.id
+        );
       }
       return {
         ...currentState,
         favouriteList: updatedList,
       };
     }
-    case ESaveListsActionTypes.WATCHLATER_ADD_TO_LIST: {
+    case ESaveListsActionTypes.WATCHLATER_ADDREMOVE_TO_LIST: {
       const itemExist: IMovie | undefined = currentState.watchLaterList.find(
         (item) => item.id === action.payload.id
       );
@@ -63,6 +67,10 @@ const saveListReducer = (
           }
           return 0;
         });
+      } else if (itemExist) {
+        updatedList = updatedList.filter(
+          (item) => item.id !== action.payload.id
+        );
       }
       return {
         ...currentState,
