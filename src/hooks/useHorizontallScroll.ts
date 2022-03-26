@@ -12,6 +12,7 @@ export function useHorizontalScroll() {
           left: el.scrollLeft + e.deltaY,
           behavior: "auto",
         });
+        // el.scrollLeft -= e.wheelDelta || -e.detail;
       };
       el.addEventListener("wheel", onWheel);
       return () => el.removeEventListener("wheel", onWheel);
