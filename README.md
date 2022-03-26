@@ -11,13 +11,13 @@ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 
 ### Live Demo
 
-[khaledr.ir](https://khaledr.com)
+[khaledr.ir](https://khaledr.ir)
 
 ## Demo snapshots
 
-[Demo snapshot #1](./public/demo3.png)
-[Demo snapshot #2](./public/demo2.png)
-[Demo snapshot #3](./public/demo1.png)
+![Demo snapshot #1](./public/demo3.png)
+![Demo snapshot #2](./public/demo2.png)
+![Demo snapshot #3](./public/demo1.png)
 
 ## Getting Started
 
