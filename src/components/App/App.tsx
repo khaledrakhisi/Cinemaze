@@ -6,8 +6,9 @@ import FavPage from "../../pages/fav-page/FavPage.component";
 import HomePage from "../../pages/homepage/HomePage.component";
 import WatchLaterPage from "../../pages/watch-later-page/WatchLaterPage.component";
 import { device } from "../../utils/util";
-import Header from "../Header/Header.component";
+import Header from "../header/Header.component";
 import NavBottom from "../nav-bottom/NavBottom.component";
+import MovieDetails from "../movie-detail/MovieDetail.component";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -24,7 +25,6 @@ a {
   box-sizing: border-box;
 
   -ms-overflow-style: none;
-  // overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 ::-webkit-scrollbar {
   display: none;
@@ -59,6 +59,7 @@ function App() {
       <GlobalStyle />
       <AppStyled>
         <Header />
+        <MovieDetails />
         {routes}
         {!isGreaterThanTablet && <NavBottom />}
       </AppStyled>

@@ -1,3 +1,5 @@
+import ITrailer from "./trailer";
+
 export default interface IMovie {
   id: string;
   media_type: string;
@@ -8,4 +10,7 @@ export default interface IMovie {
   release_date: string;
   overview: string;
   poster_path: string;
+  videos?: {
+    results: Array<ITrailer>;
+  };
 }

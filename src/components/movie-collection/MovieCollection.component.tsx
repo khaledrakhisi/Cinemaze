@@ -12,6 +12,8 @@ import {
   addToFavouritesList,
   addToWatchLaterList,
 } from "../../redux/save-lists/save-list-actions";
+import { toggleModalVisibility } from "../../redux/ui/ui-actions";
+import { getMovieDetails } from "../../redux/movie/movie-actions";
 
 const MovieCollecionContainer = styled.div`
   display: flex;
@@ -41,13 +43,29 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
     (state: TRootStoreType) => state.saveList
   );
 
-  const favouriteButtonClickHandle = (e: any, movieItem: IMovie) => {
+  const favouriteButtonClickHandle = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => {
     console.log(movieItem);
 
     dispatch(addToFavouritesList(movieItem));
   };
-  const watchLaterButtonClickHandle = (e: any, movieItem: IMovie) => {
+  const watchLaterButtonClickHandle = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => {
     dispatch(addToWatchLaterList(movieItem));
+  };
+  const itemClickedHandle = (
+    event: React.MouseEvent<HTMLDivElement>,
+    movieId: string
+  ) => {
+    // First, fetch the selected movie details from the API
+    dispatch(getMovieDetails(movieId));
+
+    // second show movie details or error
+    dispatch(toggleModalVisibility());
   };
 
   /* 
@@ -84,6 +102,7 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
               watchLaterButtonAsFilled={watchlaterFilled}
               onFavouritesButtonClicked={favouriteButtonClickHandle}
               onWatchLaterButtonClicked={watchLaterButtonClickHandle}
+              onClickHandle={itemClickedHandle}
             />
           );
         })}

@@ -10,6 +10,7 @@ const INITIAL_STATE: IUIState = {
   currentViewStyle: EUITypes.VIEW_STYLE_LISTVIEW,
   currentNavTab: EUITypes.NAV_TAB_SEARCH,
   inputSearchValue: "",
+  modalVisibility: false,
 };
 
 const viewStyleReducer = (
@@ -27,10 +28,15 @@ const viewStyleReducer = (
         ...currentState,
         currentNavTab: action.payload,
       };
-    case EUIActions.INPUT_SEARCH_CHANGED:
+    case EUIActions.UI_INPUT_SEARCH_CHANGED:
       return {
         ...currentState,
         inputSearchValue: action.payload,
+      };
+    case EUIActions.UI_MODAL_TOGGLE_VISIBILITY:
+      return {
+        ...currentState,
+        modalVisibility: !currentState.modalVisibility,
       };
     default:
       return currentState;

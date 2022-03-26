@@ -10,13 +10,15 @@ export enum EUITypes {
 export enum EUIActions {
   UI_VIEWSTYLE_CHANGED = "UI_VIEWSTYLE_CHANGED",
   UI_NAVTAB_CHANGED = "UI_NAVTAB_CHANGED",
-  INPUT_SEARCH_CHANGED = "INPUT_SEARCH_CHANGED",
+  UI_INPUT_SEARCH_CHANGED = "UI_INPUT_SEARCH_CHANGED",
+  UI_MODAL_TOGGLE_VISIBILITY = "UI_MODAL_TOGGLE_VISIBILITY",
 }
 
 export interface IUIState {
   currentViewStyle: EUITypes;
   currentNavTab: EUITypes;
   inputSearchValue: string;
+  modalVisibility: boolean;
 }
 
 export type TUIDispatchAction = {
@@ -27,4 +29,8 @@ export type TUIDispatchAction = {
 export type TUIInputDispatchAction = {
   type: EUIActions;
   payload: string;
+};
+
+export type TUIModalDispatchAction = {
+  type: EUIActions;
 };

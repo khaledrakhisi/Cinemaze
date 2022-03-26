@@ -1,12 +1,17 @@
 import IMovie from "../../types/movie";
 
-export enum EMovieActionTypes {
-  MOVIES_FETCH_REQUEST = "MOVIES_FETCH_REQUEST",
-  MOVIES_FETCH_SUCCESS = "MOVIES_FETCH_SUCCESS",
-  MOVIES_FETCH_FAILURE = "MOVIES_FETCH_FAILURE",
+export enum EMovieSearchActionTypes {
+  MOVIES_SEARCH_FETCH_REQUEST = "MOVIES_SEARCH_FETCH_REQUEST",
+  MOVIES_SEARCH_FETCH_SUCCESS = "MOVIES_SEARCH_FETCH_SUCCESS",
+  MOVIES_SEARCH_FETCH_FAILURE = "MOVIES_SEARCH_FETCH_FAILURE",
+}
+export enum EMovieDetailsActionTypes {
+  MOVIES_DETAILS_FETCH_REQUEST = "MOVIES_DETAILS_FETCH_REQUEST",
+  MOVIES_DETAILS_FETCH_SUCCESS = "MOVIES_DETAILS_FETCH_SUCCESS",
+  MOVIES_DETAILS_FETCH_FAILURE = "MOVIES_DETAILS_FETCH_FAILURE",
 }
 
-export interface IMovieRequestResult {
+export interface IMovieSearchRequestResult {
   page: number;
   results: Array<IMovie>;
   total_pages: number;
@@ -20,15 +25,38 @@ export interface IMovieFavoritesList {
   total: number;
 }
 
-export interface IMovieRequest {
-  type: typeof EMovieActionTypes.MOVIES_FETCH_REQUEST;
+export interface IMoviesSearchRequest {
+  type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_REQUEST;
 }
-export interface IMovieSuccess {
-  type: typeof EMovieActionTypes.MOVIES_FETCH_SUCCESS;
-  payload: IMovieRequestResult;
+export interface IMoviesSearchSuccess {
+  type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS;
+  payload: IMovieSearchRequestResult;
 }
-export interface IMovieFailure {
-  type: typeof EMovieActionTypes.MOVIES_FETCH_FAILURE;
+export interface IMoviesSearchFailure {
+  type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_FAILURE;
 }
 
-export type TMovieDispatchType = IMovieRequest | IMovieSuccess | IMovieFailure;
+export type TMoviesSearchDispatchType =
+  | IMoviesSearchRequest
+  | IMoviesSearchSuccess
+  | IMoviesSearchFailure;
+
+export interface IMovieDetailsRequestResult extends IMovie {
+  isLoading: boolean;
+  error: string;
+}
+export interface IMoviesDetailsRequest {
+  type: typeof EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_REQUEST;
+}
+export interface IMoviesDetailsSuccess {
+  type: typeof EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_SUCCESS;
+  payload: IMovieDetailsRequestResult;
+}
+export interface IMoviesDetailsFailure {
+  type: typeof EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_FAILURE;
+}
+
+export type TMovieDetailsDispatchType =
+  | IMoviesDetailsRequest
+  | IMoviesDetailsSuccess
+  | IMoviesDetailsFailure;

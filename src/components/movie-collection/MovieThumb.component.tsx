@@ -70,12 +70,23 @@ interface IMovieThumbProps extends IMovie {
   showWatchlaterButton: boolean;
   favouritesButtonAsFilled: boolean;
   watchLaterButtonAsFilled: boolean;
-  onFavouritesButtonClicked: (e: any, movieItem: IMovie) => void;
-  onWatchLaterButtonClicked: (e: any, movieItem: IMovie) => void;
+  onFavouritesButtonClicked: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => void;
+  onWatchLaterButtonClicked: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    movieItem: IMovie
+  ) => void;
+  onClickHandle: (
+    event: React.MouseEvent<HTMLDivElement>,
+    movieId: string
+  ) => void;
 }
 
 const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
   const {
+    id,
     release_date,
     poster_path,
     vote_average,
@@ -86,6 +97,7 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
     watchLaterButtonAsFilled,
     onFavouritesButtonClicked,
     onWatchLaterButtonClicked,
+    onClickHandle,
   } = props;
   const classes = useStyles();
 
@@ -93,6 +105,9 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
     <MovieContainer
       style={{
         backgroundImage: `url("${process.env.REACT_APP_API_POSTER_URL}${poster_path}")`,
+      }}
+      onClick={(e) => {
+        onClickHandle(e, id);
       }}
     >
       <DetailsBar>

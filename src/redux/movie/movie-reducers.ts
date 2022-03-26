@@ -1,10 +1,13 @@
 import {
-  EMovieActionTypes,
-  IMovieRequestResult,
-  TMovieDispatchType,
+  EMovieDetailsActionTypes,
+  EMovieSearchActionTypes,
+  IMovieDetailsRequestResult,
+  IMovieSearchRequestResult,
+  TMovieDetailsDispatchType,
+  TMoviesSearchDispatchType,
 } from "./movie-types";
 
-const INITIAL_STATE: IMovieRequestResult = {
+const SEARCH_INITIAL_STATE: IMovieSearchRequestResult = {
   page: 0,
   results: [],
   total_pages: 0,
@@ -13,21 +16,21 @@ const INITIAL_STATE: IMovieRequestResult = {
   error: "",
 };
 
-const movieReducer = (
-  currentState: IMovieRequestResult = INITIAL_STATE,
-  action: TMovieDispatchType
-): IMovieRequestResult => {
+const movieSearchReducer = (
+  currentState: IMovieSearchRequestResult = SEARCH_INITIAL_STATE,
+  action: TMoviesSearchDispatchType
+): IMovieSearchRequestResult => {
   switch (action.type) {
-    case EMovieActionTypes.MOVIES_FETCH_REQUEST:
+    case EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_REQUEST:
       return {
         ...currentState,
         isLoading: true,
       };
 
-    case EMovieActionTypes.MOVIES_FETCH_SUCCESS:
+    case EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS:
       return action.payload;
 
-    case EMovieActionTypes.MOVIES_FETCH_FAILURE:
+    case EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_FAILURE:
       return {
         page: 0,
         total_pages: 0,
@@ -42,4 +45,44 @@ const movieReducer = (
   }
 };
 
-export default movieReducer;
+const DETAILS_INITIAL_STATE: IMovieDetailsRequestResult = {
+  id: "",
+  media_type: "",
+  original_name: "",
+  overview: "",
+  poster_path: "",
+  release_date: "",
+  title: "",
+  vote_average: 0,
+  vote_count: 0,
+  isLoading: false,
+  error: "",
+};
+
+const movieDetailReducer = (
+  currentState: IMovieDetailsRequestResult = DETAILS_INITIAL_STATE,
+  action: TMovieDetailsDispatchType
+): IMovieDetailsRequestResult => {
+  switch (action.type) {
+    case EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_REQUEST:
+      return {
+        ...currentState,
+        isLoading: true,
+      };
+
+    case EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_SUCCESS:
+      return action.payload;
+
+    case EMovieDetailsActionTypes.MOVIES_DETAILS_FETCH_FAILURE:
+      return {
+        ...currentState,
+        isLoading: false,
+        error: "error happend",
+      };
+
+    default:
+      return currentState;
+  }
+};
+
+export { movieSearchReducer, movieDetailReducer };
