@@ -13,7 +13,7 @@ import NavBottom from "../nav-bottom/NavBottom.component";
 const GlobalStyle = createGlobalStyle`
 
 body {
-  padding: 0;
+  padding: 0;  
 }
 
 a {

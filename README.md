@@ -15,9 +15,11 @@ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 
 ## Demo snapshots
 
+<div align="center">
 ![Demo snapshot #1](./public/demo3.png)
-![Demo snapshot #2](./public/demo2.png)
+![Demo snapshot #2](./public/demo4.png)
 ![Demo snapshot #3](./public/demo1.png)
+</div>
 
 ## Getting Started
 

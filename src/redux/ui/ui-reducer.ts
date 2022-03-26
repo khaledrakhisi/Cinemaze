@@ -7,7 +7,7 @@ import {
 } from "./ui-types";
 
 const INITIAL_STATE: IUIState = {
-  currentViewStyle: EUITypes.VIEW_STYLE_LISTVIEW,
+  currentViewStyle: EUITypes.VIEW_STYLE_THUMBNAIL,
   currentNavTab: EUITypes.NAV_TAB_SEARCH,
   inputSearchValue: "",
   modalVisibility: false,

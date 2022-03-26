@@ -31,11 +31,12 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
   poster: {
-    width: "100px",
-    height: "145px",
-    minWidth: "100px",
-    minHeight: "145px",
+    width: "110px",
+    height: "155px",
+    minWidth: "110px",
+    minHeight: "155px",
     margin: "0 5px",
+    borderRadius: "7px",
   },
   releaseDate: {
     color: "#41802e",

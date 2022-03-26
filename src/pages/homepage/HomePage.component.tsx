@@ -68,10 +68,14 @@ const HomePage: React.FunctionComponent = () => {
             {isLoading && <LoadingSpinner asOverlay />}
             <MovieCollection movies={results} />
           </SectionSearchStyled>
-          <Typography className={classes.sectionTitle}>Favourites</Typography>
+          <Typography className={classes.sectionTitle}>
+            &#10097; Favourites
+          </Typography>
           <Divider />
           <MovieCollection movies={favouriteList} />
-          <Typography className={classes.sectionTitle}>Watch later</Typography>
+          <Typography className={classes.sectionTitle}>
+            &#10097; Watch later
+          </Typography>
           <Divider />
           <MovieCollection movies={watchLaterList} />
         </React.Fragment>
