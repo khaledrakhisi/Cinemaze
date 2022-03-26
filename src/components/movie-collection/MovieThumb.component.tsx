@@ -104,9 +104,11 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
 
   /* Extracting Year from release date*/
   let releasedYear = "";
-  if (release_date.includes("-")) {
-    releasedYear = release_date.slice(0, release_date.indexOf("-"));
-  }
+  try {
+    if (release_date.includes("-")) {
+      releasedYear = release_date.slice(0, release_date.indexOf("-"));
+    }
+  } catch {}
 
   return (
     <MovieContainer
