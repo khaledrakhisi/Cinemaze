@@ -22,8 +22,13 @@ a {
 
 * {
   box-sizing: border-box;
-}
 
+  -ms-overflow-style: none;
+  // overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+::-webkit-scrollbar {
+  display: none;
+}
 `;
 
 const AppStyled = styled.div`

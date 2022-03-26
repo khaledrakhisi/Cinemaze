@@ -9,11 +9,11 @@ import WatchLaterIconFilled from "@mui/icons-material/WatchLater";
 import WatchLaterIconOutlined from "@mui/icons-material/WatchLaterOutlined";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { makeStyles } from "@mui/styles";
 
 import { TRootStoreType } from "../../redux/store";
 import { changeNavTab } from "../../redux/ui/ui-actions";
 import { EUITypes } from "../../redux/ui/ui-types";
-import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   stickToBottom: {

@@ -22,11 +22,15 @@ import { abbreviateNumber } from "../../utils/util";
 import { EListType } from "./MovieList.component";
 
 const useStyles = makeStyles({
-  list: {
+  container: {
     padding: "0",
+    boxShadow: "3px 3px 3px 0 #aaa",
+    marginBottom: "5px",
+    borderRadius: "5px",
+    border: "1px solid #e4e4eb",
   },
   title: {
-    color: "blue",
+    color: "#1976d2",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
@@ -40,7 +44,7 @@ const useStyles = makeStyles({
     margin: "0 5px",
   },
   releaseDate: {
-    color: "green",
+    color: "#41802e",
     fontSize: ".8rem",
     fontWeight: "bold",
   },
@@ -99,7 +103,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (movie) => {
   };
 
   return (
-    <ListItem alignItems="flex-start" className={classes.list}>
+    <ListItem alignItems="flex-start" className={classes.container}>
       <ListItemAvatar>
         <Box
           className={classes.poster}

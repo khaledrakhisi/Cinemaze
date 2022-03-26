@@ -1,5 +1,4 @@
 import React from "react";
-import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import { makeStyles } from "@mui/styles";
 
@@ -14,6 +13,7 @@ const useStyles = makeStyles({
     maxHeight: "85%",
     minHeight: "100px",
     overflow: "auto",
+    padding: "5px",
   },
   divider: {
     margin: "auto",
@@ -42,17 +42,10 @@ const MovieList: React.FunctionComponent<IMovieListProps> = ({
     <React.Fragment>
       {movies &&
         movies.length === 0 &&
-        "The list is empty, type some name in the search textbox. you can use voice command too!"}
+        "The list is empty, type something in the search textbox. you can use voice command too!"}
       <List className={classes.list}>
         {movies.map((movie) => (
-          <React.Fragment key={movie.id}>
-            <MovieItem {...movie} itemType={listType} />
-            <Divider
-              className={classes.divider}
-              variant="inset"
-              component="li"
-            />
-          </React.Fragment>
+          <MovieItem {...movie} itemType={listType} />
         ))}
       </List>
     </React.Fragment>
