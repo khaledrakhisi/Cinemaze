@@ -20,6 +20,9 @@ export const device = {
 };
 
 export function abbreviateNumber(value: number): string {
+  if (!value) {
+    return "0";
+  }
   let newValue: string = value.toString();
   try {
     if (value >= 1000) {

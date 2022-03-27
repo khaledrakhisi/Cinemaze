@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
+import { makeStyles } from "@mui/styles";
 
 export interface IInputSearchProps {
   id: string;
@@ -15,7 +16,14 @@ export interface IInputSearchProps {
   required?: boolean;
 }
 
+const useStyles = makeStyles({
+  textbox: {
+    borderColor: "#fff",
+  },
+});
+
 const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
+  const classes = useStyles();
   return (
     <TextField
       id={props.id}
@@ -25,6 +33,7 @@ const InputSearch: React.FunctionComponent<IInputSearchProps> = (props) => {
       type={props.type}
       name={props.name}
       required={props.required}
+      className={classes.textbox}
       InputProps={{
         style: { height: "40px", marginRight: "10px" },
         startAdornment: (

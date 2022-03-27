@@ -14,7 +14,7 @@ import NavBottom from "../nav-bottom/NavBottom.component";
 const GlobalStyle = createGlobalStyle`
 
 body {
-  padding: 0;
+  padding: 0;  
 }
 
 a {
@@ -34,13 +34,19 @@ a {
 
 const AppStyled = styled.div`
   width: 100vw;
-  // height: 100vh;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
-  margin-top: 57px;
+  padding-top: 57px; // for header
+  padding-bottom: 57px; // for footer
+  @media ${device.tablet} {
+    padding-bottom: 0; // for footer
+  }
+
+  overflow: scroll;
 `;
 
 const routes = (
@@ -51,7 +57,6 @@ const routes = (
     <Route path="/watchlater" element={<WatchLaterPage />} />
   </Routes>
 );
-
 function App() {
   /*
     I'm using useNediaQuery Hook from MaterialUI to run media query breakpoints

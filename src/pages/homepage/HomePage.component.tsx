@@ -14,11 +14,13 @@ import { TRootStoreType } from "../../redux/store";
 import { EUITypes } from "../../redux/ui/ui-types";
 
 const HomepageStyled = styled.div`
-  height: calc(100vh - 120px);
+  height: 100%;
 
   padding: 10px;
+
+  overflow: scroll;
 `;
-const SectionSearchStyled = styled.div`
+const SectionThumbnailSearchStyled = styled.div`
   position: relative;
 `;
 const SectionListStyled = styled.div`
@@ -70,10 +72,10 @@ const HomePage: React.FunctionComponent = () => {
         </SectionListStyled>
       ) : (
         <React.Fragment>
-          <SectionSearchStyled>
+          <SectionThumbnailSearchStyled>
             {isLoading && <LoadingSpinner asOverlay />}
             <MovieCollection movies={results} isInfiniteScroll={true} />
-          </SectionSearchStyled>
+          </SectionThumbnailSearchStyled>
           <Typography className={classes.sectionTitle}>
             &#10097; Favorites
           </Typography>
