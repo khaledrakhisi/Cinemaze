@@ -64,6 +64,12 @@ Designed with [Balsamiq.com](https://balsamiq.com)
 |   |   |
 |   |   |---MovieItem
 |   |
+|---FavoritesPage
+|
+|---WatchLaterPage
+|
+|---MoviDetails(Modal)
+|
 |---SignInUpPage
 |   |
 |   |---SignIn
@@ -99,7 +105,7 @@ yarn start
 Do not follow the happy path! be prepared for worst case senario.
 
 - Unit Test
-  - Run `jest` to execute the unit tests.
+  - Run `yarn test` to execute the unit tests.
 - E2E Test
   - Run `cy` to execute the e2e test.
 

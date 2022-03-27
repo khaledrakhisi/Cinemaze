@@ -24,13 +24,8 @@
           "semi": true
         }
       ],
-      "max-len": [
-        "error",
-        {
-          "ignoreUrls": true,
-          "code": 100
-        }
-      ],
+      "no-unused-vars": "off",
+      "max-len": "off",
       "prefer-template": "off",
       "object-curly-spacing": [
         "error",

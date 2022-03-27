@@ -26,16 +26,18 @@ const YoutubeEmbed: React.FunctionComponent<IYoutubeEmbedProps> = ({
   embedId,
 }) => (
   <ContainerStyled>
-    <IframeStyled
-      //   width="853"
-      //   height="480"
-      src={`https://www.youtube-nocookie.com/embed/${embedId}`}
-      frameBorder="1"
-      allow="accelerometer; clipboard-write;
+    {embedId && (
+      <IframeStyled
+        //   width="853"
+        //   height="480"
+        src={`https://www.youtube.com/embed/${embedId}`}
+        frameBorder="1"
+        allow="accelerometer; clipboard-write;
        encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-      title="Trailer"
-    />
+        allowFullScreen
+        title="Trailer"
+      />
+    )}
   </ContainerStyled>
 );
 

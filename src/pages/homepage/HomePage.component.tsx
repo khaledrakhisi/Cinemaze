@@ -32,10 +32,15 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     fontSize: "20px",
   },
+  poweredby: {
+    color: "#2E3B55",
+    margin: "20px",
+    textAlign: "center",
+  },
 });
 
 const HomePage: React.FunctionComponent = () => {
-  const { results, isLoading, error } = useSelector(
+  const { results, isLoading } = useSelector(
     (state: TRootStoreType) => state.movie
   );
   const { currentViewStyle, inputSearchValue } = useSelector(
@@ -69,7 +74,7 @@ const HomePage: React.FunctionComponent = () => {
             <MovieCollection movies={results} />
           </SectionSearchStyled>
           <Typography className={classes.sectionTitle}>
-            &#10097; Favourites
+            &#10097; Favorites
           </Typography>
           <Divider />
           <MovieCollection movies={favouriteList} />
@@ -80,6 +85,9 @@ const HomePage: React.FunctionComponent = () => {
           <MovieCollection movies={watchLaterList} />
         </React.Fragment>
       )}
+      <Typography className={classes.poweredby}>
+        Powered by The Movie Database (TMDB) themoviedb.org
+      </Typography>
     </HomepageStyled>
   );
 };

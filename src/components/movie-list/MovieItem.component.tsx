@@ -129,7 +129,16 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
     if (release_date.includes("-")) {
       releasedYear = release_date.slice(0, release_date.indexOf("-"));
     }
-  } catch {}
+  } catch {
+    // todo
+  }
+
+  let posterFullpath = "";
+  if (poster_path) {
+    posterFullpath = `${process.env.REACT_APP_API_POSTER_URL!}${poster_path}`;
+  } else {
+    posterFullpath = `${process.env.PUBLIC_URL}cinema.png`;
+  }
 
   return (
     <ListItem
@@ -144,7 +153,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
           className={classes.poster}
           component="img"
           alt="none"
-          src={`${process.env.REACT_APP_API_POSTER_URL}${poster_path}`}
+          src={posterFullpath}
         />
       </ListItemAvatar>
       <ListItemText

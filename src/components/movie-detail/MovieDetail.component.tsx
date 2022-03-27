@@ -91,17 +91,9 @@ const MovieDetails: React.FunctionComponent = () => {
   const { modalVisibility } = useSelector(
     (state: TRootStoreType) => state.UIState
   );
-  const {
-    title,
-    release_date,
-    poster_path,
-    overview,
-    vote_count,
-    vote_average,
-    isLoading,
-    error,
-    videos,
-  } = useSelector((state: TRootStoreType) => state.movieDetails);
+  const { title, poster_path, overview, isLoading, videos } = useSelector(
+    (state: TRootStoreType) => state.movieDetails
+  );
 
   const handleClose = () => dispatch(toggleModalVisibility());
 
@@ -130,12 +122,19 @@ const MovieDetails: React.FunctionComponent = () => {
               >
                 {title}
               </Typography>
-              <Box
-                className={classes.poster}
-                component="img"
-                alt={title}
-                src={`${process.env.REACT_APP_API_POSTER_URL}${poster_path}`}
-              />
+
+              {poster_path !== null &&
+              poster_path !== undefined &&
+              poster_path !== "" ? (
+                <Box
+                  className={classes.poster}
+                  component="img"
+                  alt={title}
+                  src={`${process.env.REACT_APP_API_POSTER_URL}${poster_path}`}
+                />
+              ) : (
+                <Box className={classes.poster} component="img" alt={title} />
+              )}
               <Typography
                 id="transition-modal-description"
                 sx={{ mt: 2 }}

@@ -108,12 +108,20 @@ const MovieThumb: React.FunctionComponent<IMovieThumbProps> = (props) => {
     if (release_date.includes("-")) {
       releasedYear = release_date.slice(0, release_date.indexOf("-"));
     }
-  } catch {}
+  } catch {
+    // todo
+  }
 
+  let posterFullpath = "";
+  if (poster_path) {
+    posterFullpath = `${process.env.REACT_APP_API_POSTER_URL!}${poster_path}`;
+  } else {
+    posterFullpath = `${process.env.PUBLIC_URL}cinema.png`;
+  }
   return (
     <MovieContainer
       style={{
-        backgroundImage: `url("${process.env.REACT_APP_API_POSTER_URL}${poster_path}")`,
+        backgroundImage: `url("${posterFullpath}")`,
       }}
       onClick={(e) => {
         onClickHandle(e, id);

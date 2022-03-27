@@ -31,7 +31,7 @@ const FavPage: React.FunctionComponent = () => {
 
   return (
     <FavpageStyled>
-      <Typography className={classes.pageTitle}>Favourites</Typography>
+      <Typography className={classes.pageTitle}>Favorites</Typography>
       <MovieList movies={saveList.favouriteList} />
     </FavpageStyled>
   );
