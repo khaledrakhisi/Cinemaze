@@ -78,6 +78,8 @@ Designed with [Balsamiq.com](https://balsamiq.com)
 |   |
 ```
 
+This app uses js debouncing technique so as the user types search functionality runs without need for submit.
+
 ### Installing Dependencies
 
 ```
