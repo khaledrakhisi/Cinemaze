@@ -47,6 +47,8 @@ This app powered by : [themoviedb.org](https://api.themoviedb.org)
 ![CV APP Preview](https://share.balsamiq.com/c/uMzGrHVH9KUE9xG8wqz46.png)
 Designed with [Balsamiq.com](https://balsamiq.com)
 
+In this app all the styles are used as StyledComponent. it means the is no need for seperate .scss file.
+
 ## Approches & Structure
 
 ![TDD Cicle](https://marsner.com/wp-content/uploads/test-driven-development-TDD.png)
@@ -104,7 +106,7 @@ yarn build
 yarn start
 ```
 
-#### Test
+#### Tests
 
 Do not follow the happy path! be prepared for worst case senario.
 
@@ -112,6 +114,8 @@ Do not follow the happy path! be prepared for worst case senario.
   - Run `yarn test` to execute the unit tests.
 - E2E Test
   - Run `cy` to execute the e2e test.
+
+Test files are modular make. It means every test file is beside the main file or component.
 
 ## Help
 
