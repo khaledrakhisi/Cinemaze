@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 });
 
 const HomePage: React.FunctionComponent = () => {
-  const { results, isLoading } = useSelector(
+  const { results, isLoading, total_results } = useSelector(
     (state: TRootStoreType) => state.movie
   );
   const { currentViewStyle, inputSearchValue } = useSelector(
@@ -62,6 +62,7 @@ const HomePage: React.FunctionComponent = () => {
   return (
     <HomepageStyled>
       <SearchArea />
+      {total_results > 1 && `${total_results} results`}
       {currentViewStyle === EUITypes.VIEW_STYLE_LISTVIEW ? (
         <SectionListStyled>
           {isLoading && <LoadingSpinner asOverlay />}
@@ -71,23 +72,25 @@ const HomePage: React.FunctionComponent = () => {
         <React.Fragment>
           <SectionSearchStyled>
             {isLoading && <LoadingSpinner asOverlay />}
-            <MovieCollection movies={results} />
+            <MovieCollection movies={results} isInfiniteScroll={true} />
           </SectionSearchStyled>
           <Typography className={classes.sectionTitle}>
             &#10097; Favorites
           </Typography>
           <Divider />
-          <MovieCollection movies={favouriteList} />
+          <MovieCollection movies={favouriteList} isInfiniteScroll={false} />
           <Typography className={classes.sectionTitle}>
             &#10097; Watch later
           </Typography>
           <Divider />
-          <MovieCollection movies={watchLaterList} />
+          <MovieCollection movies={watchLaterList} isInfiniteScroll={false} />
         </React.Fragment>
       )}
-      <Typography className={classes.poweredby}>
-        Powered by The Movie Database (TMDB) themoviedb.org
-      </Typography>
+      {currentViewStyle === EUITypes.VIEW_STYLE_THUMBNAIL && (
+        <Typography className={classes.poweredby}>
+          Powered by The Movie Database (TMDB) themoviedb.org
+        </Typography>
+      )}
     </HomepageStyled>
   );
 };

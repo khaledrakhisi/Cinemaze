@@ -10,21 +10,23 @@ import {
 } from "./movie-types";
 
 export const getMovies =
-  (queryString: string) =>
+  (queryString: string, pageNumber: string = "1") =>
   async (dispatch: Dispatch<TMoviesSearchDispatchType>) => {
     try {
       dispatch({
         type: EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_REQUEST,
       });
 
-      const pageNumber = "1";
       const response = await fetchWithTimeout(
         `${process.env.REACT_APP_API_URL}?api_key=${process.env.REACT_APP_API_KEY}&language=${process.env.REACT_APP_API_LANGUAGE}&query=${queryString}&page=${pageNumber}&include_adult=false`
       );
       const data = await response.json();
 
       dispatch({
-        type: EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS,
+        type:
+          Number(pageNumber) === 1
+            ? EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS
+            : EMovieSearchActionTypes.MOVIES_NEXTPAGE_FETCH_SUCCESS,
         payload: data,
       });
     } catch (error) {

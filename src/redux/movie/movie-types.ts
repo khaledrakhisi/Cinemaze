@@ -3,6 +3,7 @@ import IMovie from "../../types/movie";
 export enum EMovieSearchActionTypes {
   MOVIES_SEARCH_FETCH_REQUEST = "MOVIES_SEARCH_FETCH_REQUEST",
   MOVIES_SEARCH_FETCH_SUCCESS = "MOVIES_SEARCH_FETCH_SUCCESS",
+  MOVIES_NEXTPAGE_FETCH_SUCCESS = "MOVIES_NEXTPAGE_FETCH_SUCCESS",
   MOVIES_SEARCH_FETCH_FAILURE = "MOVIES_SEARCH_FETCH_FAILURE",
 }
 export enum EMovieDetailsActionTypes {
@@ -29,9 +30,12 @@ export interface IMoviesSearchRequest {
   type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_REQUEST;
 }
 export interface IMoviesSearchSuccess {
-  type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS;
+  type:
+    | typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS
+    | EMovieSearchActionTypes.MOVIES_NEXTPAGE_FETCH_SUCCESS;
   payload: IMovieSearchRequestResult;
 }
+
 export interface IMoviesSearchFailure {
   type: typeof EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_FAILURE;
 }

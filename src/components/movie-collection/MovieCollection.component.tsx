@@ -1,9 +1,10 @@
 import React from "react";
+import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { useHorizontalScroll } from "../../hooks/useHorizontallScroll";
-import { getMovieDetails } from "../../redux/movie/movie-actions";
+import { getMovieDetails, getMovies } from "../../redux/movie/movie-actions";
 import {
   addToFavouritesList,
   addToWatchLaterList,
@@ -25,22 +26,51 @@ const MovieCollecionContainer = styled.div`
 
   position: relative;
 `;
+const LoadingStyled = styled.div`
+  margin: 0 0 0 60px;
+  text-align: center;
+  color: blue;
+`;
 
 interface IMovieListProps {
   movies: Array<IMovie>;
+  isInfiniteScroll: boolean;
 }
 
 const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
   movies,
+  isInfiniteScroll,
 }) => {
   const scrollRef = useHorizontalScroll();
   const dispatch = useDispatch();
-  const { currentNavTab } = useSelector(
+  const { isLoading, page, total_pages, error } = useSelector(
+    (state: TRootStoreType) => state.movie
+  );
+  const { currentNavTab, inputSearchValue } = useSelector(
     (state: TRootStoreType) => state.UIState
   );
   const { favouriteList, watchLaterList } = useSelector(
     (state: TRootStoreType) => state.saveList
   );
+
+  const loadMoreHandle = () => {
+    if (inputSearchValue) {
+      dispatch(getMovies(inputSearchValue, (Number(page) + 1).toString()));
+    }
+  };
+  const hasNextPage: boolean = page < total_pages;
+  const [sentryRef] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage: hasNextPage,
+    onLoadMore: loadMoreHandle,
+    // When there is an error, we stop infinite loading.
+    // It can be reactivated by setting "error" state as undefined.
+    disabled: Boolean(error),
+    // `rootMargin` is passed to `IntersectionObserver`.
+    // We can use it to trigger 'onLoadMore' when the sentry comes near to become
+    // visible, instead of becoming fully visible on the screen.
+    rootMargin: "0px 0px 400px 0px",
+  });
 
   const favouriteButtonClickHandle = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -77,6 +107,7 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
   const showWatchLaterButton =
     currentNavTab === EUITypes.NAV_TAB_WATCHLATER ||
     currentNavTab === EUITypes.NAV_TAB_SEARCH;
+
   return (
     <React.Fragment>
       {movies &&
@@ -105,6 +136,11 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
             />
           );
         })}
+        {(isLoading || hasNextPage) && isInfiniteScroll && (
+          <LoadingStyled key="{@@}" ref={sentryRef}>
+            Loading...
+          </LoadingStyled>
+        )}
       </MovieCollecionContainer>
     </React.Fragment>
   );

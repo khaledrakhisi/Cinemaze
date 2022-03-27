@@ -1,9 +1,11 @@
 import React from "react";
+import useInfiniteScroll from "react-infinite-scroll-hook";
 import { useDispatch, useSelector } from "react-redux";
 import List from "@mui/material/List";
 import { makeStyles } from "@mui/styles";
+import styled from "styled-components";
 
-import { getMovieDetails } from "../../redux/movie/movie-actions";
+import { getMovieDetails, getMovies } from "../../redux/movie/movie-actions";
 import {
   addToFavouritesList,
   addToWatchLaterList,
@@ -30,6 +32,12 @@ const useStyles = makeStyles({
   },
 });
 
+const LoadingStyled = styled.div`
+  margin: 10px 0 60px;
+  text-align: center;
+  color: blue;
+`;
+
 interface IMovieListProps {
   movies: Array<IMovie>;
 }
@@ -37,12 +45,34 @@ interface IMovieListProps {
 const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { currentNavTab } = useSelector(
+  const { isLoading, page, total_pages, error } = useSelector(
+    (state: TRootStoreType) => state.movie
+  );
+  const { currentNavTab, inputSearchValue } = useSelector(
     (state: TRootStoreType) => state.UIState
   );
   const { favouriteList, watchLaterList } = useSelector(
     (state: TRootStoreType) => state.saveList
   );
+
+  const loadMoreHandle = () => {
+    if (inputSearchValue) {
+      dispatch(getMovies(inputSearchValue, (Number(page) + 1).toString()));
+    }
+  };
+  const hasNextPage: boolean = page < total_pages;
+  const [sentryRef] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage: hasNextPage,
+    onLoadMore: loadMoreHandle,
+    // When there is an error, we stop infinite loading.
+    // It can be reactivated by setting "error" state as undefined.
+    disabled: Boolean(error),
+    // `rootMargin` is passed to `IntersectionObserver`.
+    // We can use it to trigger 'onLoadMore' when the sentry comes near to become
+    // visible, instead of becoming fully visible on the screen.
+    rootMargin: "0px 0px 400px 0px",
+  });
 
   const favouriteButtonClickHandle = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -107,6 +137,12 @@ const MovieList: React.FunctionComponent<IMovieListProps> = ({ movies }) => {
             />
           );
         })}
+        {(isLoading || hasNextPage) &&
+          currentNavTab === EUITypes.NAV_TAB_SEARCH && (
+            <LoadingStyled key="{@@}" ref={sentryRef}>
+              Loading...
+            </LoadingStyled>
+          )}
       </List>
     </React.Fragment>
   );

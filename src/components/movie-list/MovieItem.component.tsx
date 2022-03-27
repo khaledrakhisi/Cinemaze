@@ -90,15 +90,15 @@ interface IMovieItemProps extends IMovie {
   showWatchlaterButton: boolean;
   favouritesButtonAsFilled: boolean;
   watchLaterButtonAsFilled: boolean;
-  onFavouritesButtonClicked: (
+  onFavouritesButtonClicked?: (
     event: React.MouseEvent<HTMLButtonElement>,
     movieItem: IMovie
   ) => void;
-  onWatchLaterButtonClicked: (
+  onWatchLaterButtonClicked?: (
     event: React.MouseEvent<HTMLButtonElement>,
     movieItem: IMovie
   ) => void;
-  onClickHandle: (
+  onClickHandle?: (
     event: React.MouseEvent<HTMLLIElement>,
     movieId: string
   ) => void;
@@ -145,7 +145,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
       alignItems="flex-start"
       className={classes.container}
       onClick={(e) => {
-        onClickHandle(e, id);
+        onClickHandle?.(e, id);
       }}
     >
       <ListItemAvatar>
@@ -168,7 +168,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
                 {showWatchlaterButton && (
                   <IconButton
                     className={classes.iconButton}
-                    onClick={(e) => onWatchLaterButtonClicked(e, props)}
+                    onClick={(e) => onWatchLaterButtonClicked?.(e, props)}
                   >
                     {watchLaterButtonAsFilled ? (
                       <WatchLaterIconFilled className={classes.icon} />
@@ -180,7 +180,7 @@ const MovieItem: React.FunctionComponent<IMovieItemProps> = (props) => {
                 {showFavouritesButton && (
                   <IconButton
                     className={classes.iconButton}
-                    onClick={(e) => onFavouritesButtonClicked(e, props)}
+                    onClick={(e) => onFavouritesButtonClicked?.(e, props)}
                   >
                     {favouritesButtonAsFilled ? (
                       <StarIconFilled className={classes.icon} />

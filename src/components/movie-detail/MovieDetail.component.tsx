@@ -19,7 +19,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "90%",
-  height: "90%",
+  height: "70%",
   bgcolor: "background.paper",
   border: "1px solid #000",
   boxShadow: 24,
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   poster: {
-    width: "70%",
+    width: "50%",
     // height: "90%",
     minWidth: "100px",
     minHeight: "145px",

@@ -30,6 +30,12 @@ const movieSearchReducer = (
     case EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_SUCCESS:
       return action.payload;
 
+    case EMovieSearchActionTypes.MOVIES_NEXTPAGE_FETCH_SUCCESS:
+      return {
+        ...action.payload,
+        results: [...currentState.results, ...action.payload.results],
+      };
+
     case EMovieSearchActionTypes.MOVIES_SEARCH_FETCH_FAILURE:
       return {
         page: 0,
