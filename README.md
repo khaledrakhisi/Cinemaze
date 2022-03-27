@@ -51,6 +51,8 @@ Designed with [Balsamiq.com](https://balsamiq.com)
 
 ![TDD Cicle](https://marsner.com/wp-content/uploads/test-driven-development-TDD.png)
 
+Test-driven development (TDD), also called test-driven design, is a method of implementing software programming that interlaces unit testing, programming and refactoring on source code.
+
 ### Components tree & State map
 
 ```
