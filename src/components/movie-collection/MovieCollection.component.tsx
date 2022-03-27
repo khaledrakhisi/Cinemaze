@@ -27,9 +27,23 @@ const MovieCollecionContainer = styled.div`
   position: relative;
 `;
 const LoadingStyled = styled.div`
-  margin: 0 0 0 60px;
-  text-align: center;
-  color: blue;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 150px;
+  max-height: 200px;
+  min-width: 150px;
+  min-height: 200px;
+
+  margin: 5px 5px;
+
+  border: 1px solid #e4e4eb;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 interface IMovieListProps {
@@ -138,7 +152,7 @@ const MovieCollection: React.FunctionComponent<IMovieListProps> = ({
         })}
         {(isLoading || hasNextPage) && isInfiniteScroll && (
           <LoadingStyled key="{@@}" ref={sentryRef}>
-            Loading...
+            <span>Loading...</span>
           </LoadingStyled>
         )}
       </MovieCollecionContainer>
