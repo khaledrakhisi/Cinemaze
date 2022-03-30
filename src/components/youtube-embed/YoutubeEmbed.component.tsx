@@ -4,11 +4,12 @@ import styled from "styled-components";
 
 const ContainerStyled = styled.div`
   overflow: hidden;
-  padding-bottom: 56.25%;
+  // padding-bottom: 56.25%;
   position: relative;
-  height: 0;
-  width: 70%;
+  height: 250px;
+  width: 250px;
   margin: 10px auto;
+  background-color: red;
 `;
 const IframeStyled = styled.iframe`
   left: 0;
@@ -28,8 +29,8 @@ const YoutubeEmbed: React.FunctionComponent<IYoutubeEmbedProps> = ({
   <ContainerStyled>
     {embedId && (
       <IframeStyled
-        //   width="853"
-        //   height="480"
+        // width="853px"
+        // height="480"
         src={`https://www.youtube-nocookie.com/embed/${embedId}`}
         frameBorder="1"
         allow="accelerometer; clipboard-write;

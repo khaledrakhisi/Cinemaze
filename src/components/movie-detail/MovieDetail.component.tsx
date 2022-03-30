@@ -53,7 +53,7 @@ const useStyles = makeStyles({
   },
   overview: {
     color: "#000",
-    maxHeight: "75px",
+    // maxHeight: "75px",
     fontSize: "1rem",
     textAlign: "justify",
     // wordBreak: "break-all",
@@ -82,6 +82,11 @@ const useStyles = makeStyles({
   },
   iconButton: {
     padding: "2px 5px",
+  },
+  videos: {
+    minHeight: "300px",
+    maxHeight: "300px",
+    overflow: "scroll",
   },
 });
 
@@ -142,13 +147,12 @@ const MovieDetails: React.FunctionComponent = () => {
               >
                 {overview}
               </Typography>
-              <Container>
-                {videos?.results &&
-                  videos?.results.length > 0 &&
-                  videos.results.map((video) => (
-                    <YoutubeEmbed key={video.id} embedId={`${video.key}`} />
-                  ))}
-              </Container>
+
+              {videos?.results &&
+                videos?.results.length > 0 &&
+                videos.results.map((video) => (
+                  <YoutubeEmbed key={video.id} embedId={`${video.key}`} />
+                ))}
             </Container>
           </Fade>
         </Modal>
